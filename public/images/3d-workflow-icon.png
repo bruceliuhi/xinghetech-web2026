@@ -1,0 +1,42 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="workflow1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C4BFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9122FA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 圆形背景 -->
+  <circle cx="200" cy="200" r="180" fill="url(#workflow1)" opacity="0.1"/>
+  
+  <!-- 工作流图标 - 流程图 -->
+  <g transform="translate(200, 200)">
+    <!-- 节点 -->
+    <circle cx="-60" cy="-50" r="20" fill="url(#workflow1)"/>
+    <circle cx="0" cy="-50" r="20" fill="url(#workflow1)"/>
+    <circle cx="60" cy="-50" r="20" fill="url(#workflow1)"/>
+    
+    <rect x="-40" y="20" width="80" height="40" rx="8" fill="url(#workflow1)"/>
+    
+    <!-- 连接线 -->
+    <line x1="-60" y1="-30" x2="-60" y2="0" stroke="url(#workflow1)" stroke-width="3"/>
+    <line x1="0" y1="-30" x2="0" y2="0" stroke="url(#workflow1)" stroke-width="3"/>
+    <line x1="60" y1="-30" x2="60" y2="0" stroke="url(#workflow1)" stroke-width="3"/>
+    
+    <line x1="-60" y1="0" x2="-40" y2="0" stroke="url(#workflow1)" stroke-width="3"/>
+    <line x1="0" y1="0" x2="0" y2="20" stroke="url(#workflow1)" stroke-width="3"/>
+    <line x1="40" y1="0" x2="60" y2="0" stroke="url(#workflow1)" stroke-width="3"/>
+    
+    <!-- 箭头 -->
+    <polygon points="0,18 -4,12 4,12" fill="url(#workflow1)"/>
+    <polygon points="-42,0 -36,-4 -36,4" fill="url(#workflow1)"/>
+    <polygon points="58,0 52,-4 52,4" fill="url(#workflow1)"/>
+    
+    <!-- 内部图标 -->
+    <text x="0" y="46" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">AI</text>
+  </g>
+  
+  <!-- 标识文字 -->
+  <text x="200" y="360" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2C4BFF" text-anchor="middle">Workflow Icon</text>
+  <text x="200" y="385" font-family="Arial, sans-serif" font-size="14" fill="#6B7280" text-anchor="middle">工作流图标</text>
+</svg>

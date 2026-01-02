@@ -1,0 +1,24 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C4BFF;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#9122FA;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="#F8F9FE"/>
+  <rect width="1920" height="1080" fill="url(#bg1)"/>
+  
+  <!-- 网格 -->
+  <g opacity="0.15">
+    <line x1="0" y1="270" x2="1920" y2="270" stroke="#2C4BFF" stroke-width="1"/>
+    <line x1="0" y1="540" x2="1920" y2="540" stroke="#2C4BFF" stroke-width="1"/>
+    <line x1="0" y1="810" x2="1920" y2="810" stroke="#2C4BFF" stroke-width="1"/>
+    <line x1="480" y1="0" x2="480" y2="1080" stroke="#2C4BFF" stroke-width="1"/>
+    <line x1="960" y1="0" x2="960" y2="1080" stroke="#2C4BFF" stroke-width="1"/>
+    <line x1="1440" y1="0" x2="1440" y2="1080" stroke="#2C4BFF" stroke-width="1"/>
+  </g>
+  
+  <!-- 标识文字 -->
+  <text x="960" y="520" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#2C4BFF" text-anchor="middle" opacity="0.3">Hero Background</text>
+  <text x="960" y="580" font-family="Arial, sans-serif" font-size="24" fill="#6B7280" text-anchor="middle" opacity="0.5">首页主背景 - 请用设计图覆盖此文件</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroVisual" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C4BFF;stop-opacity:0.12" />
+      <stop offset="100%" style="stop-color:#9122FA;stop-opacity:0.08" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#F8F9FE"/>
+  <rect width="1200" height="800" fill="url(#heroVisual)"/>
+  
+  <!-- 3D 视觉元素 -->
+  <g transform="translate(600, 400)">
+    <!-- 主体 - 立方体 -->
+    <g opacity="0.6">
+      <polygon points="-120,-60 0,-120 120,-60 120,60 0,120 -120,60" fill="#2C4BFF" opacity="0.4"/>
+      <polygon points="0,-120 120,-60 120,60 0,0" fill="#2C4BFF" opacity="0.6"/>
+      <polygon points="-120,-60 0,-120 0,0 -120,60" fill="#2C4BFF" opacity="0.3"/>
+      <polygon points="-120,60 0,120 0,0" fill="#2C4BFF" opacity="0.5"/>
+    </g>
+    
+    <!-- 环绕元素 -->
+    <circle cx="-200" cy="-100" r="30" fill="#9122FA" opacity="0.4"/>
+    <circle cx="200" cy="-80" r="35" fill="#9122FA" opacity="0.5"/>
+    <circle cx="-180" cy="120" r="25" fill="#9122FA" opacity="0.4"/>
+    <circle cx="180" cy="100" r="30" fill="#9122FA" opacity="0.5"/>
+    
+    <!-- 连接线 -->
+    <line x1="-170" y1="-80" x2="-120" y2="-50" stroke="#9122FA" stroke-width="2" opacity="0.3"/>
+    <line x1="170" y1="-60" x2="120" y2="-40" stroke="#9122FA" stroke-width="2" opacity="0.3"/>
+  </g>
+  
+  <!-- 标识文字 -->
+  <text x="600" y="680" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#2C4BFF" text-anchor="middle" opacity="0.3">Agent Hero Visual</text>
+  <text x="600" y="730" font-family="Arial, sans-serif" font-size="22" fill="#6B7280" text-anchor="middle" opacity="0.5">Agent页主视觉 - 请用设计图覆盖</text>
+</svg>

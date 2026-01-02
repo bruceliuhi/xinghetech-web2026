@@ -1,0 +1,41 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ogBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C4BFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9122FA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  
+  <!-- 装饰网格 -->
+  <g opacity="0.15">
+    <line x1="0" y1="157.5" x2="1200" y2="157.5" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="315" x2="1200" y2="315" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="472.5" x2="1200" y2="472.5" stroke="white" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="630" stroke="white" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="white" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="white" stroke-width="1"/>
+  </g>
+  
+  <!-- Logo 区域 -->
+  <g transform="translate(150, 100)">
+    <circle cx="0" cy="0" r="50" fill="white" opacity="0.9"/>
+    <path d="M 0 -25 L 10 -5 L 30 -5 L 15 5 L 20 25 L 0 12 L -20 25 L -15 5 L -30 -5 L -10 -5 Z" fill="url(#ogBg)"/>
+  </g>
+  
+  <!-- 主标题 -->
+  <text x="150" y="270" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="start">星河卓越</text>
+  <text x="150" y="340" font-family="Arial, sans-serif" font-size="48" font-weight="normal" fill="white" text-anchor="start" opacity="0.95">AI Platform</text>
+  
+  <!-- 副标题 -->
+  <text x="150" y="420" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="start" opacity="0.9">行业级人工智能平台</text>
+  
+  <!-- 装饰性元素 -->
+  <circle cx="1050" cy="150" r="80" fill="white" opacity="0.1"/>
+  <circle cx="1000" cy="480" r="100" fill="white" opacity="0.08"/>
+  
+  <!-- 底部说明 -->
+  <text x="150" y="560" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="start" opacity="0.7">企业级智能体 · 知识治理 · 模型演进</text>
+</svg>

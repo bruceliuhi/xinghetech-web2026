@@ -1,0 +1,39 @@
+# robots.txt for 星河卓越官网
+# https://www.xinghetech.cn
+
+User-agent: *
+Allow: /
+
+# 禁止抓取的路径（如有需要）
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# 网站地图
+Sitemap: https://www.xinghetech.cn/sitemap.xml
+
+# 搜索引擎特定规则
+
+# 百度
+User-agent: Baiduspider
+Allow: /
+
+# 谷歌
+User-agent: Googlebot
+Allow: /
+
+# 搜狗
+User-agent: Sogou web spider
+Allow: /
+
+# 360搜索
+User-agent: 360Spider
+Allow: /
+
+# 必应
+User-agent: bingbot
+Allow: /
+
+# 抓取延迟（秒）
+Crawl-delay: 1

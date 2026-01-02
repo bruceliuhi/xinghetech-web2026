@@ -1,0 +1,33 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="report1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C4BFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9122FA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 圆形背景 -->
+  <circle cx="200" cy="200" r="180" fill="url(#report1)" opacity="0.1"/>
+  
+  <!-- 报告文档图标 -->
+  <g transform="translate(200, 200)">
+    <!-- 文档主体 -->
+    <rect x="-60" y="-80" width="120" height="160" rx="8" fill="url(#report1)"/>
+    
+    <!-- 折角 -->
+    <path d="M 40 -80 L 40 -50 L 60 -50 Z" fill="#9122FA"/>
+    
+    <!-- 文字线条 -->
+    <line x1="-40" y1="-50" x2="20" y2="-50" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-40" y1="-30" x2="30" y2="-30" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-40" y1="-10" x2="25" y2="-10" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- 图表 -->
+    <rect x="-40" y="10" width="80" height="50" rx="4" fill="white" opacity="0.9"/>
+    <polyline points="-30,45 -15,35 0,40 15,25 30,30" stroke="url(#report1)" stroke-width="3" fill="none"/>
+  </g>
+  
+  <!-- 标识文字 -->
+  <text x="200" y="360" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2C4BFF" text-anchor="middle">Report Icon</text>
+  <text x="200" y="385" font-family="Arial, sans-serif" font-size="14" fill="#6B7280" text-anchor="middle">报告图标</text>
+</svg>

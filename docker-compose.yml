@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: xinghe-ai-website
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    networks:
+      - xinghe-network
+
+networks:
+  xinghe-network:
+    driver: bridge

@@ -1,0 +1,27 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chat1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C4BFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9122FA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 圆形背景 -->
+  <circle cx="200" cy="200" r="180" fill="url(#chat1)" opacity="0.1"/>
+  
+  <!-- 对话气泡图标 -->
+  <g transform="translate(200, 200)">
+    <!-- 主气泡 -->
+    <rect x="-80" y="-60" width="160" height="100" rx="20" fill="url(#chat1)"/>
+    <path d="M -20 40 L -10 60 L -30 40 Z" fill="url(#chat1)"/>
+    
+    <!-- 文字线条 -->
+    <line x1="-60" y1="-30" x2="40" y2="-30" stroke="white" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-60" y1="0" x2="20" y2="0" stroke="white" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-60" y1="30" x2="60" y2="30" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  
+  <!-- 标识文字 -->
+  <text x="200" y="360" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2C4BFF" text-anchor="middle">Chat Icon</text>
+  <text x="200" y="385" font-family="Arial, sans-serif" font-size="14" fill="#6B7280" text-anchor="middle">对话图标</text>
+</svg>

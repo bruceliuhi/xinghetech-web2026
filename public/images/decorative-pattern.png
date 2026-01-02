@@ -1,0 +1,27 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="decorGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <rect width="32" height="32" fill="#F8F9FE"/>
+      <circle cx="16" cy="16" r="2" fill="#2C4BFF" opacity="0.3"/>
+    </pattern>
+    <linearGradient id="decorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C4BFF;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#9122FA;stop-opacity:0.08" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="512" height="512" fill="url(#decorGrid)"/>
+  <rect width="512" height="512" fill="url(#decorGrad)"/>
+  
+  <!-- 装饰性几何 -->
+  <g opacity="0.15">
+    <circle cx="128" cy="128" r="40" fill="#2C4BFF"/>
+    <circle cx="384" cy="128" r="35" fill="#9122FA"/>
+    <circle cx="128" cy="384" r="35" fill="#9122FA"/>
+    <circle cx="384" cy="384" r="40" fill="#2C4BFF"/>
+  </g>
+  
+  <!-- 标识 -->
+  <text x="256" y="246" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2C4BFF" text-anchor="middle" opacity="0.4">Decorative</text>
+  <text x="256" y="276" font-family="Arial, sans-serif" font-size="14" fill="#6B7280" text-anchor="middle" opacity="0.4">装饰纹理</text>
+</svg>

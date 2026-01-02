@@ -1,0 +1,35 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="analysis1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C4BFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9122FA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 圆形背景 -->
+  <circle cx="200" cy="200" r="180" fill="url(#analysis1)" opacity="0.1"/>
+  
+  <!-- 数据分析图标 - 图表 -->
+  <g transform="translate(200, 200)">
+    <!-- 坐标轴 -->
+    <line x1="-80" y1="70" x2="-80" y2="-70" stroke="url(#analysis1)" stroke-width="4"/>
+    <line x1="-80" y1="70" x2="80" y2="70" stroke="url(#analysis1)" stroke-width="4"/>
+    
+    <!-- 柱状图 -->
+    <rect x="-60" y="20" width="25" height="50" rx="4" fill="url(#analysis1)" opacity="0.8"/>
+    <rect x="-25" y="-10" width="25" height="80" rx="4" fill="url(#analysis1)"/>
+    <rect x="10" y="30" width="25" height="40" rx="4" fill="url(#analysis1)" opacity="0.7"/>
+    <rect x="45" y="-30" width="25" height="100" rx="4" fill="url(#analysis1)"/>
+    
+    <!-- 趋势线 -->
+    <polyline points="-60,40 -25,-20 10,50 45,-40" stroke="#FFD700" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="-60" cy="40" r="5" fill="#FFD700"/>
+    <circle cx="-25" cy="-20" r="5" fill="#FFD700"/>
+    <circle cx="10" cy="50" r="5" fill="#FFD700"/>
+    <circle cx="45" cy="-40" r="5" fill="#FFD700"/>
+  </g>
+  
+  <!-- 标识文字 -->
+  <text x="200" y="360" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2C4BFF" text-anchor="middle">Analysis Icon</text>
+  <text x="200" y="385" font-family="Arial, sans-serif" font-size="14" fill="#6B7280" text-anchor="middle">分析图标</text>
+</svg>

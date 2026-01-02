@@ -1,0 +1,14 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <rect width="64" height="64" fill="#F8F9FE"/>
+      <line x1="0" y1="0" x2="0" y2="64" stroke="#2C4BFF" stroke-width="0.5" opacity="0.2"/>
+      <line x1="0" y1="0" x2="64" y2="0" stroke="#2C4BFF" stroke-width="0.5" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect width="512" height="512" fill="url(#grid)"/>
+  
+  <!-- 标识 -->
+  <text x="256" y="246" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#2C4BFF" text-anchor="middle" opacity="0.4">Pattern</text>
+  <text x="256" y="276" font-family="Arial, sans-serif" font-size="14" fill="#6B7280" text-anchor="middle" opacity="0.4">背景纹理</text>
+</svg>
