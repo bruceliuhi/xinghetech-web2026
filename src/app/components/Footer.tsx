@@ -42,27 +42,19 @@ export function Footer() {
               </div>
 
               {/* 主要描述 */}
+              {/* 主要描述 - 按照高端 To B 风格排版 */}
               <div className="space-y-4">
-                <p className="text-foreground/75 leading-relaxed text-sm">
-                  面向行业与企业提供 AI 平台与智能系统能力，
-                  以平台化方式支撑智能能力的构建、运行与持续演进，
-                  帮助 AI 能力稳定融入复杂业务体系，实现长期可用。
+                <p className="text-sm text-foreground/75 leading-relaxed">
+                  星河卓越是一家面向行业与企业提供 AI 平台与智能系统能力的技术公司，专注于将大模型与 Agent 能力组织为可长期运行的行业级 AI 系统。
                 </p>
 
-                {/* 公司介绍与能力总结 */}
-                <div className="pt-3 border-t border-foreground/10 space-y-3">
-                  <p className="text-foreground/65 leading-relaxed text-sm">
-                    星河卓越是一家位于北京中关村软件园的高新技术企业，
-                    核心团队长期深耕数据安全、数据治理与企业级系统建设，
-                    在复杂合规环境下推进数据与智能能力的安全落地。
-                  </p>
+                <p className="text-sm text-foreground/75 leading-relaxed">
+                  平台支撑 AI 能力的构建、运行与持续演进，帮助 AI 能力稳定融入复杂业务体系，适用于对系统稳定性、可管理性与合规性要求较高的行业场景。
+                </p>
 
-                  <p className="text-foreground/65 leading-relaxed text-sm">
-                    基于多年数据合规与系统运行经验，
-                    星河卓越构建了面向长期运行的智能平台底座，
-                    支撑智能系统在多行业场景中的稳定部署与持续演进。
-                  </p>
-                </div>
+                <p className="text-sm text-foreground/75 leading-relaxed">
+                  核心团队长期从事数据安全、数据治理与企业级系统建设，能够在复杂合规环境下推进 AI 系统的安全部署与长期运行，为智能系统的长期可用与持续演进提供可靠基础。
+                </p>
               </div>
             </div>
 
@@ -116,7 +108,7 @@ export function Footer() {
               <div className="bg-white p-4 rounded-2xl shadow-lg border border-blue-100/50 hover:shadow-xl hover:scale-105 transition-all">
                 <img src={qrCode} alt="企业微信" className="w-32 h-32 rounded-lg" />
               </div>
-              <p className="text-sm text-foreground/60 mt-3">扫码详细沟通</p>
+              <p className="text-sm text-foreground/60 mt-3">扫码咨询 · 获取平台方案</p>
             </div>
           </motion.div>
 

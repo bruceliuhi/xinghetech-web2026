@@ -78,7 +78,7 @@ export function ScenariosSection() {
         <svg width="100%" height="100%">
           <defs>
             <pattern id="hexagons" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-              <polygon points="40,5 70,22.5 70,57.5 40,75 10,57.5 10,22.5" fill="none" stroke="#8B5CF6" strokeWidth="1"/>
+              <polygon points="40,5 70,22.5 70,57.5 40,75 10,57.5 10,22.5" fill="none" stroke="#8B5CF6" strokeWidth="1" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#hexagons)" />
@@ -123,7 +123,7 @@ export function ScenariosSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-[48px]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-[48px] bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-1">
             应用场景示例
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -147,7 +147,7 @@ export function ScenariosSection() {
                   <div className="absolute inset-0 bg-white/30 backdrop-blur-sm"></div>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     {/* 外层光晕 - 呼吸动效 */}
-                    <motion.div 
+                    <motion.div
                       className={`absolute w-24 h-24 rounded-2xl ${scenario.bgColor} blur-xl`}
                       animate={{
                         opacity: [0.4, 0.7, 0.4],
@@ -159,15 +159,15 @@ export function ScenariosSection() {
                         ease: "easeInOut",
                       }}
                     ></motion.div>
-                    
+
                     {/* 图标容器 - 增强毛玻璃和渐变 */}
-                    <motion.div 
+                    <motion.div
                       className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br from-white/90 via-white/70 to-white/50 backdrop-blur-xl shadow-2xl flex items-center justify-center border border-white/60 overflow-hidden`}
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.15,
                         rotate: [0, -5, 5, 0],
                       }}
-                      transition={{ 
+                      transition={{
                         scale: {
                           type: "spring",
                           stiffness: 300,
@@ -180,7 +180,7 @@ export function ScenariosSection() {
                       }}
                     >
                       {/* 内部光泽效果 - 动态移动 */}
-                      <motion.div 
+                      <motion.div
                         className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-transparent"
                         animate={{
                           backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
@@ -191,9 +191,9 @@ export function ScenariosSection() {
                           ease: "linear",
                         }}
                       ></motion.div>
-                      
+
                       {/* 彩色渐变背景 - 脉动效果 */}
-                      <motion.div 
+                      <motion.div
                         className={`absolute inset-0 bg-gradient-to-br ${scenario.iconBg.replace('bg-', 'from-')}/30 to-transparent`}
                         animate={{
                           opacity: [0.3, 0.6, 0.3],
@@ -204,7 +204,7 @@ export function ScenariosSection() {
                           ease: "easeInOut",
                         }}
                       ></motion.div>
-                      
+
                       {/* 图标 - 悬浮微动 */}
                       <motion.div
                         animate={{

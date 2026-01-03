@@ -236,7 +236,7 @@ function HeroSection() {
               >
                 <img
                   src={heroImage}
-                  alt="AI智能体平台"
+                  alt="星河卓越企业级AI智能体平台界面展示"
                   className="w-full h-auto rounded-2xl shadow-2xl border border-white/20"
                 />
               </motion.div>

@@ -54,7 +54,7 @@ export function TrustSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-[48px] bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-1">
             面向长期运行的可信基础
           </h2>
         </motion.div>
@@ -84,23 +84,23 @@ export function TrustSection() {
               >
                 {/* Card background with gradient border effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-primary/10 to-accent/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                
+
                 <div className="h-full relative bg-white rounded-2xl p-6 border border-border/50 text-center transition-all duration-500 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1">
                   {/* Icon container with unified style */}
                   <div className="relative mx-auto w-16 h-16 mb-5">
                     {/* Background circle */}
                     <div className="absolute inset-0 bg-[#E9ECFE]/60 rounded-2xl group-hover:scale-110 transition-transform duration-500" />
-                    
+
                     {/* Icon */}
                     <div className="relative h-full flex items-center justify-center">
                       <Icon className="w-7 h-7 text-[#2C4BFF] transition-colors duration-500" strokeWidth={2.25} />
                     </div>
                   </div>
-                  
+
                   <h3 className="font-semibold mb-3 text-foreground/90 group-hover:text-foreground transition-colors duration-300">
                     {point.title}
                   </h3>
-                  
+
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {point.description}
                   </p>

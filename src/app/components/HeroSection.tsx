@@ -1,15 +1,17 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export function HeroSection() {
+  const navigate = useNavigate();
   const [displayedText, setDisplayedText] = useState('');
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
-  const phrases = ['AI能力平台', '多智能体系统', '全链路安全保障', '系统集成能力'];
-  
+
+  const phrases = ['面向行业与企业的 AI 系统服务商', '专注将 AI 能力稳定融入业务体系', '支持智能系统的长期运行与持续演进'];
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
@@ -17,17 +19,17 @@ export function HeroSection() {
         y: e.clientY,
       });
     };
-    
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-  
+
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex];
-    
+
     const typingSpeed = isDeleting ? 50 : 100;
     const pauseTime = isDeleting ? 500 : 2000;
-    
+
     const timer = setTimeout(() => {
       if (!isDeleting) {
         // 正在打字
@@ -48,7 +50,7 @@ export function HeroSection() {
         }
       }
     }, typingSpeed);
-    
+
     return () => clearTimeout(timer);
   }, [displayedText, isDeleting, currentPhraseIndex]);
 
@@ -60,29 +62,35 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative py-[160px] overflow-hidden">
-      {/* Background gradient - 阿里云百炼风格 */}
-      <div className="hero-bg">
-        <div className="bailian-spot"></div>
-        {/* 鼠标跟随呼吸光圈 */}
-        <motion.div
-          className="pointer-events-none absolute w-96 h-96 rounded-full opacity-0"
-          animate={{
-            x: mousePosition.x - 192,
-            y: mousePosition.y - 192,
-            opacity: [0.25, 0.4, 0.25],
-          }}
-          transition={{
-            x: { type: "spring", damping: 30, stiffness: 200 },
-            y: { type: "spring", damping: 30, stiffness: 200 },
-            opacity: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-          }}
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(96, 165, 250, 0.35) 30%, rgba(147, 197, 253, 0.15) 50%, transparent 70%)',
-            filter: 'blur(35px)',
-          }}
-        />
-      </div>
+    <section
+      id="home"
+      className="relative py-[160px] overflow-hidden"
+      style={{
+        backgroundImage: 'url(/images/changjing.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* 鼠标跟随呼吸光圈 - 保留 */}
+      <motion.div
+        className="pointer-events-none absolute w-96 h-96 rounded-full opacity-0"
+        animate={{
+          x: mousePosition.x - 192,
+          y: mousePosition.y - 192,
+          opacity: [0.25, 0.4, 0.25],
+        }}
+        transition={{
+          x: { type: "spring", damping: 30, stiffness: 200 },
+          y: { type: "spring", damping: 30, stiffness: 200 },
+          opacity: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+        }}
+        style={{
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(96, 165, 250, 0.35) 30%, rgba(147, 197, 253, 0.15) 50%, transparent 70%)',
+          filter: 'blur(35px)',
+          zIndex: 1
+        }}
+      />
 
       {/* Grid background */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
@@ -182,69 +190,66 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 min-h-[1.2em]"
+            className="font-bold mb-8 flex flex-col items-center"
           >
-            <span className="text-[#26244C]/80 text-[rgb(26,31,46)]">面向行业的</span>
-            <span className="bg-gradient-to-r from-[#2C4BFF] to-[#9122FA] bg-clip-text text-transparent">
+            {/* 公司名 - 字号微调 - 稍微缩小 */}
+            <div className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-6 tracking-tight bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-2">
+              星河卓越
+            </div>
+
+            {/* 轮播文案 - 字号加大 */}
+            <div
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium
+                         whitespace-nowrap max-w-[90%] mx-auto overflow-visible
+                         bg-gradient-to-r from-[#2C4BFF] to-[#9122FA] bg-clip-text text-transparent
+                         h-[1.6em] flex items-center justify-center gap-1"
+              style={{ wordBreak: 'keep-all' }}
+            >
               {displayedText}
-            </span>
-            <span className="inline-block w-1 h-[0.9em] bg-gradient-to-r from-primary to-accent ml-1 animate-pulse" />
+              <span className="inline-block w-1 h-[0.9em] bg-gradient-to-r from-primary to-accent animate-pulse" />
+            </div>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg sm:text-xl lg:text-2xl text-foreground/50 mb-12 max-w-3xl mx-auto leading-relaxed text-[rgba(26,31,46,0.9)]"
+            className="text-lg sm:text-xl lg:text-2xl text-slate-600 font-medium mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            为企业提供<span className="text-[rgb(0,0,0)] font-bold">可构建、可管理、可持续运行</span>的 AI 能力体系
+            为企业提供<span className="text-slate-900 font-bold">可构建、可管理、可持续运行</span>的 AI 能力体系
             <br />
             支撑 AI 能力稳定融入业务
           </motion.p>
 
-          {/* 统计数据 - 移到钮上方 */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-16"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
-              <div className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#2C4BFF] to-[#9122FA] bg-clip-text text-transparent text-[26px]">行业级能力体系</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#2C4BFF] to-[#9122FA] bg-clip-text text-transparent text-[26px]">Agent 业务执行</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#2C4BFF] to-[#9122FA] bg-clip-text text-transparent text-[26px]">全链路治理能力</div>
-              </div>
-            </div>
-          </motion.div>
-
+          {/* 按钮区域 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-32"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 mt-32"
           >
             <button
-              onClick={() => scrollToSection('#capabilities')}
+              onClick={() => navigate('/about')}
               className="group px-8 py-4 bg-[rgb(44,75,255)] hover:bg-primary/90 text-primary-foreground rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
             >
-              平台能力概览
+              了解星河卓越
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
-              onClick={() => scrollToSection('#agent')}
+              onClick={() => navigate('/capabilities')}
               className="group px-8 py-4 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-lg transition-all flex items-center gap-2 border border-border"
             >
-              Agent 与应用场景
+              查看系统能力与实践
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </motion.div>
+
+
         </div>
       </div>
-    </section>
+
+      {/* Bottom fade for smooth transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white via-white/60 to-transparent z-20 pointer-events-none" />
+    </section >
   );
 }

@@ -3,10 +3,11 @@ import { BackgroundSection } from '../components/BackgroundSection';
 import { CapabilitiesSection } from '../components/CapabilitiesSection';
 import { AgentSection } from '../components/AgentSection';
 import { ScenariosSection } from '../components/ScenariosSection';
-import { PracticesSection } from '../components/PracticesSection';
 import { TrustSection } from '../components/TrustSection';
 import { ExploreSection } from '../components/ExploreSection';
 import { Footer } from '../components/Footer';
+
+import { FAQSection } from '../components/FAQSection';
 
 export function HomePage() {
   return (
@@ -16,8 +17,8 @@ export function HomePage() {
       <CapabilitiesSection />
       <AgentSection />
       <ScenariosSection />
-      <PracticesSection />
       <TrustSection />
+      <FAQSection />
       <ExploreSection />
       <Footer />
     </>

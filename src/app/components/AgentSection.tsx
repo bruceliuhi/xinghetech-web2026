@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
 import { MessageSquare, TrendingUp, Radio, User, Layers, Database, Brain, Shield, Activity, Server, CreditCard, Landmark, ShoppingCart, Factory } from 'lucide-react';
-const bgImage = '/images/shouye-agent-bg.png';
+const bgImage = '/images/shouye-agent-bg.webp';
 
 const agents = [
   {
@@ -60,8 +60,8 @@ export function AgentSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[48px]">
-            Agent：智能能力的组织与运行形态
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-[48px] bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-1">
+            面向组织级运行的AI能力架构
           </h2>
         </motion.div>
 
@@ -69,14 +69,11 @@ export function AgentSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-4xl mx-auto mb-10"
+          className="text-center mb-16"
         >
-          <div className="bg-card/50 backdrop-blur-sm rounded-xl p-6 border border-border">
-            <p className="text-foreground/80 leading-relaxed">
-              在星河平台中，Agent 是可被<span className="text-[rgb(0,0,0)] font-semibold">统一构建与管理</span>的智能能力单元，
-              用于将<span className="text-[rgb(0,0,0)] font-semibold">模型、知识与流程</span>组织成可运行的业务能力。
-            </p>
-          </div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            在星河卓越的系统中，Agent 并非独立产品，<br />而是AI能力在组织中的运行与协作形态。
+          </p>
         </motion.div>
 
         {/* Unified Hierarchy View */}

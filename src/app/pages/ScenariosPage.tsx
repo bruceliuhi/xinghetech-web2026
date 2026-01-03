@@ -41,12 +41,84 @@ function HeroSection() {
     <section
       className="relative min-h-[55vh] flex items-center py-12 overflow-hidden"
       style={{
-        backgroundImage: 'url(/images/changjing.png)',
+        backgroundImage: 'url(/images/changjing.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}
     >
+      {/* 高端AI氛围装饰 */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* 1. 科技感网格 - 极其微弱，仅在中心区域可见 */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:120px_120px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]" />
+
+        {/* 2. 顶部光效 - 增加通透感 */}
+        <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-blue-500/10 via-cyan-500/5 to-transparent" />
+
+        {/* 3. 动态呼吸光晕 - 缓慢移动 (增强可见度) */}
+        <motion.div
+          className="absolute top-[-20%] left-[20%] w-[800px] h-[800px] rounded-full bg-blue-500/30 blur-[100px] mix-blend-screen"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-[-20%] right-[10%] w-[600px] h-[600px] rounded-full bg-purple-500/30 blur-[80px] mix-blend-screen"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+
+        {/* 4. 悬浮粒子 - 模拟数据节点 */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white/40 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 20}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 4 + i,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            }}
+          />
+        ))}
+
+        {/* 5. 扫描光线 - 极细微的科技扫描感 */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent h-[2px] w-full"
+          animate={{
+            top: ['0%', '100%'],
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      </div>
 
 
       <div ref={ref} className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
@@ -215,7 +287,7 @@ function MainScenariosSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {scenarios.map((scenario, index) => {
             const Icon = scenario.icon;
             return (
@@ -224,80 +296,66 @@ function MainScenariosSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-white backdrop-blur-sm rounded-2xl p-6 border border-border hover:border-primary/30 transition-all duration-300"
+                whileHover={{ y: -5 }}
+                className="group relative bg-white/80 backdrop-blur-md rounded-3xl p-8 border border-white/40 shadow-xl hover:shadow-2xl hover:bg-white/90 transition-all duration-300 overflow-hidden"
               >
-                {/* Icon background gradient */}
-                <motion.div
-                  className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    opacity: [0.05, 0.1, 0.05],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: index * 0.2,
-                  }}
-                >
-                  <div className={`w-full h-full bg-gradient-to-br ${scenario.color} rounded-full blur-2xl`} />
-                </motion.div>
+                {/* Subtle gradient background on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${scenario.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
 
-                <div className="relative space-y-6">
-                  {/* Icon and Title */}
-                  <div className="flex items-start gap-4">
-                    <motion.div
-                      className={`flex-shrink-0 p-2.5 rounded-xl bg-gradient-to-br ${scenario.color}`}
-                    >
-                      <Icon className="w-5 h-5 text-white" />
-                    </motion.div>
+                {/* Top glow line */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${scenario.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 
-                    <h3 className="flex-1 font-semibold pt-1 text-lg">
+                <div className="relative z-10 space-y-8">
+                  {/* Header: Icon & Title */}
+                  <div className="flex items-start gap-5">
+                    <div className={`flex-shrink-0 p-3.5 rounded-2xl bg-gradient-to-br ${scenario.color} shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="flex-1 font-bold text-xl pt-1.5 leading-tight text-foreground/90 group-hover:text-primary transition-colors">
                       {scenario.title}
                     </h3>
                   </div>
 
-                  {/* Business Background */}
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-1 h-1 rounded-full bg-gradient-to-r ${scenario.color}`}></div>
-                      <h4 className={`text-sm font-bold bg-gradient-to-r ${scenario.color} bg-clip-text text-transparent tracking-wide`}>
-                        业务背景
-                      </h4>
+                  {/* Content Sections */}
+                  <div className="space-y-6">
+                    {/* Business Background */}
+                    <div className="bg-slate-50/50 rounded-2xl p-4 border border-slate-100 group-hover:bg-slate-50 transition-colors">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className={`text-sm tracking-wide font-bold bg-gradient-to-r ${scenario.color} bg-clip-text text-transparent opacity-90`}>
+                          业务背景
+                        </span>
+                      </div>
+                      <p className="text-sm text-foreground/70 leading-relaxed">
+                        {scenario.background}
+                      </p>
                     </div>
-                    <p className="text-base text-foreground/75 leading-relaxed pl-3">
-                      {scenario.background}
-                    </p>
-                  </div>
 
-                  {/* Product Usage */}
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-1 h-1 rounded-full bg-gradient-to-r ${scenario.color}`}></div>
-                      <h4 className={`text-sm font-bold bg-gradient-to-r ${scenario.color} bg-clip-text text-transparent tracking-wide`}>
-                        产品如何被使用
-                      </h4>
-                    </div>
-                    <p className="text-base text-foreground/75 leading-relaxed pl-3 font-medium">
-                      {scenario.usage}
-                    </p>
-                  </div>
+                    {/* Divider */}
+                    <div className="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
-                  {/* Actual Usage Methods */}
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-1 h-1 rounded-full bg-gradient-to-r ${scenario.color}`}></div>
-                      <h4 className={`text-sm font-bold bg-gradient-to-r ${scenario.color} bg-clip-text text-transparent tracking-wide`}>
-                        实际使用方式
+                    {/* How it works */}
+                    <div className="space-y-3">
+                      <h4 className="flex items-center gap-2 text-sm font-semibold text-foreground/80">
+                        <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${scenario.color}`} />
+                        核心能力
                       </h4>
+                      <p className="text-sm font-medium text-foreground/80 leading-relaxed">
+                        {scenario.usage}
+                      </p>
                     </div>
-                    <div className="space-y-2.5 pl-3">
-                      {scenario.methods.map((method, i) => (
-                        <div key={i} className="flex items-start gap-2.5">
-                          <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${scenario.color} mt-1.5 flex-shrink-0`}></div>
-                          <span className="text-base text-foreground/70 leading-relaxed">{method}</span>
-                        </div>
-                      ))}
+
+                    {/* Methods List */}
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        {scenario.methods.map((method, i) => (
+                          <span
+                            key={i}
+                            className="inline-flex items-center px-2.5 py-1 rounded-lg bg-slate-100/80 text-xs font-medium text-foreground/60 border border-slate-200/50 group-hover:border-slate-200 transition-colors"
+                          >
+                            {method}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>

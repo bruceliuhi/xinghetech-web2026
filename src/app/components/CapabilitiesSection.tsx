@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Layers, Database, Brain, Shield, Activity, Server } from 'lucide-react';
+import { Layers, Database, Brain, Shield, Activity, Server, CheckCircle2, Settings, TrendingUp } from 'lucide-react';
 
 const capabilities = [
   {
@@ -39,6 +39,24 @@ const capabilities = [
     title: '运行环境与系统集成能力',
     description: '稳定融入现有业务系统',
     color: 'from-teal-500 to-cyan-500',
+  },
+];
+
+const practices = [
+  {
+    icon: CheckCircle2,
+    title: '稳定运行',
+    description: '平台能力可在实际业务环境中持续运行,支持长期使用与日常业务承载。',
+  },
+  {
+    icon: Settings,
+    title: '持续配置',
+    description: '智能能力可根据业务变化进行配置与调整,无需重复构建或推翻既有体系。',
+  },
+  {
+    icon: TrendingUp,
+    title: '持续演进',
+    description: '平台支持能力的逐步优化与扩展,适配业务规模与需求的持续变化。',
   },
 ];
 
@@ -94,11 +112,13 @@ export function CapabilitiesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-[48px]">
-            平台能力
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-[48px] bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-1">
+            我们做什么｜行业 AI 运行系统
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            全方位的 AI 能力支撑体系
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            星河卓越通过系统化方式，
+            <br />
+            将 AI 能力组织为可构建、可管理、可持续运行的行业级系统。
           </p>
         </motion.div>
 
@@ -159,13 +179,65 @@ export function CapabilitiesSection() {
                       <Icon className="w-6 h-6 text-white" />
                     </motion.div>
                   </div>
-                  
+
                   <h3 className="text-xl font-semibold mb-4">
                     {capability.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground leading-relaxed">
                     {capability.description}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Practices Section (Merged) */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col items-center text-center mt-24 mb-12 max-w-3xl mx-auto w-full"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-1">
+            实践与运行经验
+          </h2>
+          <p className="text-xl text-slate-600 mt-4 leading-relaxed max-w-2xl">
+            星河卓越的平台能力，已在真实业务环境中持续运行与演进
+            <br className="hidden sm:block" />
+            为企业提供经得起考验的智能化支撑
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {practices.map((practice, index) => {
+            const Icon = practice.icon;
+            const iconBg = [
+              'bg-blue-50 text-blue-600',
+              'bg-indigo-50 text-indigo-600',
+              'bg-purple-50 text-purple-600',
+            ];
+
+            return (
+              <motion.div
+                key={practice.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                className="group relative bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="flex flex-col items-center text-center relative z-10">
+                  <div className={`w-16 h-16 rounded-2xl ${iconBg[index]} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className="w-8 h-8" strokeWidth={1.5} />
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-4 text-slate-900">
+                    {practice.title}
+                  </h3>
+
+                  <p className="text-slate-600 leading-relaxed text-sm">
+                    {practice.description}
                   </p>
                 </div>
               </motion.div>

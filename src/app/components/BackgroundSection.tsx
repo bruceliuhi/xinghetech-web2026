@@ -10,10 +10,14 @@ export function BackgroundSection() {
 
   return (
     <section
+      id="about"
       ref={ref}
       className="relative py-28 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
+      {/* Smooth transition from previous section */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white via-white/60 to-transparent z-10 pointer-events-none" />
+
       {/* Data flow lines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
         <svg width="100%" height="100%">
@@ -88,6 +92,7 @@ export function BackgroundSection() {
         </motion.div>
 
         {/* 副说明 + 事实说明 - 问题展开 */}
+        {/* 副说明 + 事实说明 - 问题展开 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -96,27 +101,27 @@ export function BackgroundSection() {
         >
           <div className="max-w-4xl mx-auto bg-gradient-to-br from-blue-50/60 via-purple-50/40 to-blue-50/30 rounded-2xl p-6 sm:p-8 border border-blue-100/40">
             {/* 副说明 */}
-            <p className="text-foreground/70 text-center mb-6 leading-relaxed">
+            <p className="text-slate-700 font-medium text-center mb-6 leading-relaxed">
               真正的挑战，是让 AI 能力<span className="text-[rgb(44,75,255)] font-bold">长期稳定地运行</span>在业务体系中
             </p>
 
             {/* 3条事实说明 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-white/70 backdrop-blur-sm border border-white/50">
-                <div className="w-2 h-2 rounded-full bg-primary/40 mt-2 flex-shrink-0"></div>
-                <p className="text-sm text-foreground/60 leading-relaxed">
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-white/60 shadow-sm">
+                <div className="w-2 h-2 rounded-full bg-primary/60 mt-2 flex-shrink-0"></div>
+                <p className="text-sm text-slate-700 font-medium leading-relaxed">
                   数据复杂、语义不统一
                 </p>
               </div>
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-white/70 backdrop-blur-sm border border-white/50">
-                <div className="w-2 h-2 rounded-full bg-accent/40 mt-2 flex-shrink-0"></div>
-                <p className="text-sm text-foreground/60 leading-relaxed">
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-white/60 shadow-sm">
+                <div className="w-2 h-2 rounded-full bg-accent/60 mt-2 flex-shrink-0"></div>
+                <p className="text-sm text-slate-700 font-medium leading-relaxed">
                   流程多样，难以直接接入
                 </p>
               </div>
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-white/70 backdrop-blur-sm border border-white/50">
-                <div className="w-2 h-2 rounded-full bg-primary/40 mt-2 flex-shrink-0"></div>
-                <p className="text-sm text-foreground/60 leading-relaxed">
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-white/60 shadow-sm">
+                <div className="w-2 h-2 rounded-full bg-primary/60 mt-2 flex-shrink-0"></div>
+                <p className="text-sm text-slate-700 font-medium leading-relaxed">
                   运行周期长，对稳定性要求高
                 </p>
               </div>
@@ -138,7 +143,7 @@ export function BackgroundSection() {
           {/* 主要内容卡片 */}
           <div className="relative max-w-4xl mx-auto bg-gradient-to-br from-white/95 via-blue-50/90 to-purple-50/90 backdrop-blur-md rounded-3xl px-10 py-12 border-2 border-white/50 shadow-2xl shadow-primary/10">
 
-            <p className="text-xl sm:text-2xl text-foreground/85 leading-relaxed font-medium">
+            <p className="text-xl sm:text-2xl text-slate-800 leading-relaxed font-semibold">
               星河卓越以平台化方式<span className="text-[rgb(44,75,255)] font-bold">统一管理数据、模型与运行流程，</span>支撑AI能力在行业与企业中的长期稳定运行。
             </p>
 

@@ -2,39 +2,55 @@ import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
 import { Shield, Target, Users, AlertTriangle, Layers, ArrowRight, Sparkles, Zap, Cpu } from 'lucide-react';
+// Shared Background Component for AI Feel
+const TechBackground = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+    {/* Subtle Grid */}
+    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
+
+    {/* Floating Gradient Blobs */}
+    <motion.div
+      className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[100px]"
+      animate={{
+        y: [0, 50, 0],
+        opacity: [0.3, 0.5, 0.3]
+      }}
+      transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+    />
+    <motion.div
+      className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-100/40 rounded-full blur-[100px]"
+      animate={{
+        y: [0, -50, 0],
+        opacity: [0.3, 0.5, 0.3]
+      }}
+      transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+    />
+  </div>
+);
 import { Footer } from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 export function AboutPage() {
   return (
-    <div className="pt-16">
+    <div className="pt-0">
       {/* Hero Section */}
       <HeroSection />
-      
-      {/* What We Do */}
+
+      {/* What We Do / Problems INTRO */}
       <WhatWeDoSection />
-      
-      {/* Problems We Address */}
+
+      {/* Problems We Address CARDS */}
       <ProblemsSection />
-      
+
       {/* Core Characteristics */}
       <CoreCharacteristicsSection />
-      
-      {/* How We Build */}
+
+      {/* How We Build / Approach */}
       <HowWeBuildSection />
-      
-      {/* Our Practice */}
-      <OurPracticeSection />
-      
-      {/* Our Boundaries */}
-      <OurBoundariesSection />
-      
-      {/* Closing Statement */}
+
+      {/* Closing Statement / Vision */}
       <ClosingSection />
-      
-      {/* Bottom CTA */}
-      <BottomCTASection />
-      
+
       {/* Footer */}
       <Footer />
     </div>
@@ -46,93 +62,44 @@ function HeroSection() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section className="relative min-h-[60vh] flex items-center py-32 bg-gradient-to-br from-blue-50/40 via-indigo-50/40 to-purple-50/30 overflow-hidden">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* 网格背景 */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
+    <section className="relative min-h-[85vh] flex items-center py-32 overflow-hidden">
+      {/* Background Image - Clean, no dark overlay */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url('/images/changjing2.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      />
 
-        {/* 浮动渐变球 */}
-        <motion.div
-          className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-blue-400/10 to-indigo-400/10 blur-3xl"
-          animate={{
-            x: [0, 120, 0],
-            y: [0, -90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ top: '5%', left: '3%' }}
-        />
-        <motion.div
-          className="absolute w-80 h-80 rounded-full bg-gradient-to-br from-purple-400/10 to-pink-400/10 blur-3xl"
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 80, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ bottom: '10%', right: '5%' }}
-        />
-
-        {/* AI 神经网络节点 */}
-        {[...Array(12)].map((_, i) => (
+      {/* Dynamic AI Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-primary/20"
+            className="absolute bg-blue-500/10 backdrop-blur-sm border border-blue-200/20 rounded-full"
             style={{
-              width: `${6 + (i % 3) * 2}px`,
-              height: `${6 + (i % 3) * 2}px`,
-              top: `${15 + (i * 7)}%`,
-              left: `${10 + (i * 8)}%`,
+              width: Math.random() * 20 + 10 + 'px',
+              height: Math.random() * 20 + 10 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
             }}
             animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.2, 0.5, 0.2],
+              y: [0, -150, 0],
+              x: [0, Math.random() * 50 - 25, 0],
+              opacity: [0, 0.6, 0],
+              scale: [0.8, 1.2, 0.8]
             }}
             transition={{
-              duration: 3 + (i % 3),
+              duration: Math.random() * 8 + 10,
               repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.2,
+              ease: "linear",
+              delay: Math.random() * 5,
             }}
           />
         ))}
-
-        {/* 连接线条 */}
-        <svg className="absolute inset-0 w-full h-full opacity-10">
-          <motion.line
-            x1="20%" y1="30%" x2="45%" y2="60%"
-            stroke="url(#gradient1)"
-            strokeWidth="1"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.line
-            x1="60%" y1="20%" x2="80%" y2="70%"
-            stroke="url(#gradient2)"
-            strokeWidth="1"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          />
-          <defs>
-            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#6366f1" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.5" />
-            </linearGradient>
-            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#ec4899" stopOpacity="0.5" />
-            </linearGradient>
-          </defs>
-        </svg>
       </div>
 
       <div ref={ref} className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
@@ -140,52 +107,62 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="flex items-center justify-center gap-4 mb-6"
+          className="flex flex-col items-center justify-center gap-6 mb-10"
         >
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          >
-            <Cpu className="w-12 h-12 text-primary/30" />
-          </motion.div>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-            星河卓越
+          <div className="p-5 rounded-[2rem] bg-white/60 backdrop-blur-xl border border-white/50 mb-6 inline-flex shadow-xl shadow-blue-500/5">
+            <img src="/images/logo.png" alt="XingheAI Logo" className="w-14 h-14 object-contain" />
+          </div>
+
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight tracking-wide bg-gradient-to-r from-[#0f172a] via-[#3b82f6] to-[#0f172a] bg-clip-text text-transparent pb-4 drop-shadow-sm">
+            关于星河卓越
           </h1>
+
           <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          >
-            <Sparkles className="w-10 h-10 text-accent/30" />
-          </motion.div>
+            initial={{ width: 0 }}
+            animate={isInView ? { width: 96 } : {}}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full my-6"
+          />
         </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-16 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-16 text-slate-800 tracking-tight"
         >
-          打造面向长期运行的企业级AI平台
+          面向行业与企业的 <span className="text-blue-600">AI 系统服务商</span>
         </motion.h2>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="max-w-4xl mx-auto space-y-8 text-lg text-foreground/75 leading-relaxed"
+          className="max-w-4xl mx-auto space-y-8 text-lg text-slate-700 leading-relaxed font-medium"
         >
-          <p className="text-xl">
-            星河卓越是一家专注于企业与行业场景的AI平台公司。
-          </p>
-          <p className="text-lg">
-            我们关注的不只是智能能力"能否实现"，<br />
-            更关注其是否能够在真实业务体系中长期、稳定、可控地运行。
-          </p>
-          <p className="text-lg">
-            围绕这一目标，<br />
-            星河卓越以平台化方式构建智能能力底座，<br />
-            支撑 AI 能力在复杂业务环境中的持续使用与演进。
-          </p>
+          <div className="relative group">
+            <div className="absolute inset-0 bg-white/40 backdrop-blur-xl rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-white/60 transform transition-transform duration-500 group-hover:scale-[1.02]" />
+            <div className="relative p-10 lg:p-14 text-center">
+              <p className="text-xl md:text-3xl font-normal leading-relaxed mb-10 text-slate-800 tracking-wide">
+                星河卓越是一家专注于<span className="text-blue-600 font-bold mx-2 relative inline-block">
+                  行业与企业级 AI 系统建设
+                  <span className="absolute bottom-0 left-0 w-full h-[3px] bg-blue-200/50 rounded-full"></span>
+                </span>的技术公司，<br className="hidden md:block" />
+                致力于将 AI 能力稳定融入复杂业务体系，<br className="hidden md:block" />
+                支撑智能系统在真实组织环境中的<span className="text-blue-600 font-bold mx-2 relative inline-block">
+                  长期运行与持续演进
+                  <span className="absolute bottom-0 left-0 w-full h-[3px] bg-blue-200/50 rounded-full"></span>
+                </span>。
+              </p>
+
+              <div className="bg-gradient-to-br from-blue-50/80 to-purple-50/80 backdrop-blur-sm border border-blue-100/50 rounded-2xl p-8 shadow-inner inline-block w-full">
+                <p className="text-xl md:text-2xl font-serif italic text-slate-700">
+                  "我们关注的不是单一模型、工具或功能，<br />
+                  而是 AI 在组织中的<span className="text-blue-700 font-black mx-1 not-italic">可用性、可管理性与可持续性</span>。"
+                </p>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
@@ -197,62 +174,9 @@ function WhatWeDoSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-32 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/25">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* AI粒子效果 */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-primary/20"
-            style={{
-              top: `${20 + (i * 10)}%`,
-              left: `${15 + (i * 12)}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.6, 0.2],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 4 + (i % 2),
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.3,
-            }}
-          />
-        ))}
-
-        <motion.div
-          className="absolute w-80 h-80 rounded-full bg-gradient-to-br from-blue-300/8 to-indigo-300/8 blur-3xl"
-          animate={{
-            x: [0, -70, 0],
-            y: [0, 80, 0],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ top: '10%', right: '8%' }}
-        />
-
-        {/* 装饰图标 */}
-        <motion.div
-          className="absolute top-1/4 left-[10%]"
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 10, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <Zap className="w-8 h-8 text-primary/10" />
-        </motion.div>
-      </div>
+    <section className="relative py-28 bg-white overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <TechBackground />
 
       <div ref={ref} className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <motion.div
@@ -261,49 +185,20 @@ function WhatWeDoSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
-            星河卓越
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              在做什么
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-semibold text-sm tracking-wide mb-6">
+            <AlertTriangle className="w-4 h-4" />
+            CHALLENGES
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-8 text-slate-900 tracking-tight">
+            我们在
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent px-2">
+              解决什么问题
             </span>
           </h2>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative group bg-white/60 backdrop-blur-xl p-12 md:p-16 rounded-3xl border border-white/40 shadow-xl shadow-primary/5 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 max-w-4xl mx-auto"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 100%)',
-          }}
-        >
-          {/* 玻璃反光效果 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
-          
-          {/* 边框光晕 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10" />
-          
-          {/* 装饰元素 */}
-          <motion.div
-            className="absolute top-6 right-6"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          >
-            <Sparkles className="w-6 h-6 text-primary/20" />
-          </motion.div>
-          
-          <div className="relative space-y-8">
-            <p className="text-xl text-foreground/80 leading-relaxed">
-              星河卓越围绕企业与行业在引入 AI 过程中面临的实际问题，<br />
-              提供面向长期运行的智能平台能力。
-            </p>
-            <p className="text-lg text-foreground/75 leading-relaxed">
-              我们将模型、数据、流程与安全等关键要素进行系统化组织，<br />
-              通过统一的平台机制，<br />
-              让智能能力能够被构建、管理，并持续融入业务体系。
-            </p>
-          </div>
+          <p className="text-xl sm:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-light">
+            在企业与行业场景中，AI 的落地往往面临以下挑战：
+          </p>
         </motion.div>
       </div>
     </section>
@@ -316,81 +211,35 @@ function ProblemsSection() {
 
   const problems = [
     {
-      icon: AlertTriangle,
-      title: '智能能力难以长期运行',
-      description: '许多 AI 应用在初期有效，但难以在业务环境中长期稳定使用。',
-      color: 'from-orange-500 to-red-500',
-    },
-    {
       icon: Layers,
-      title: '业务体系复杂，难以直接嵌入 AI',
-      description: '企业流程、权限与系统复杂，单点智能能力难以真正融入其中。',
-      color: 'from-blue-500 to-cyan-500',
+      title: '能力零散',
+      description: '难以融入既有业务体系',
+      color: 'from-orange-500 to-red-500',
+      bgvals: 'bg-orange-50/50',
+      border: 'border-orange-100'
     },
     {
-      icon: Target,
-      title: '能力演进不可控',
-      description: '模型更新、需求变化频繁，缺乏统一平台容易导致能力失序与重复建设。',
+      icon: Cpu,
+      title: '缺乏运行机制',
+      description: '无法长期稳定使用',
+      color: 'from-blue-500 to-cyan-500',
+      bgvals: 'bg-blue-50/50',
+      border: 'border-blue-100'
+    },
+    {
+      icon: AlertTriangle,
+      title: '缺乏治理与边界',
+      description: '存在安全与责任风险',
       color: 'from-purple-500 to-pink-500',
+      bgvals: 'bg-purple-50/50',
+      border: 'border-purple-100'
     },
   ];
 
   return (
-    <section className="relative py-32 bg-gradient-to-br from-purple-50/25 via-pink-50/20 to-blue-50/25">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* 神经网络节点 */}
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1.5 h-1.5 rounded-full bg-purple-500/20"
-            style={{
-              top: `${10 + (i * 6)}%`,
-              left: `${5 + (i * 7)}%`,
-            }}
-            animate={{
-              scale: [1, 1.8, 1],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 3 + (i % 2),
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.15,
-            }}
-          />
-        ))}
-
-        <motion.div
-          className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-purple-300/8 to-pink-300/8 blur-3xl"
-          animate={{
-            x: [0, 90, 0],
-            y: [0, -70, 0],
-          }}
-          transition={{
-            duration: 21,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ bottom: '10%', left: '5%' }}
-        />
-      </div>
-
+    <section className="relative pb-32 bg-white">
+      <TechBackground />
       <div ref={ref} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
-            我们
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              关注的问题
-            </span>
-          </h2>
-        </motion.div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {problems.map((problem, index) => {
             const Icon = problem.icon;
@@ -400,59 +249,22 @@ function ProblemsSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="group relative bg-white/60 backdrop-blur-xl rounded-2xl p-10 border border-white/40 shadow-lg hover:shadow-2xl transition-all duration-300"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 100%)',
-                }}
+                whileHover={{ y: -10 }}
+                className={`group relative ${problem.bgvals} backdrop-blur-sm rounded-[2rem] p-10 border ${problem.border} hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300`}
               >
-                {/* 玻璃反光效果 */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
-                
-                {/* 背景渐变装饰 */}
-                <motion.div
-                  className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    opacity: [0.1, 0.15, 0.1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: index * 0.2,
-                  }}
-                >
-                  <div className={`w-full h-full bg-gradient-to-br ${problem.color} rounded-full blur-2xl`} />
-                </motion.div>
-
-                {/* AI装饰点 */}
-                <motion.div
-                  className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary/30"
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.3, 0.7, 0.3],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-
-                <div className="relative">
+                <div className="relative z-10 flex flex-col items-center text-center h-full">
                   <motion.div
-                    className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${problem.color} mb-8`}
+                    className={`inline-flex p-6 rounded-2xl bg-gradient-to-br ${problem.color} mb-8 shadow-lg shadow-blue-500/20 text-white ring-4 ring-white`}
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <Icon className="w-7 h-7 text-white" />
+                    <Icon className="w-8 h-8" />
                   </motion.div>
-                  
-                  <h3 className="text-xl font-semibold mb-6 leading-tight">
+
+                  <h3 className="text-2xl font-bold mb-4 text-slate-800 tracking-tight">
                     {problem.title}
                   </h3>
-                  
-                  <p className="text-foreground/70 leading-relaxed">
+
+                  <p className="text-slate-500 text-lg flex-grow">
                     {problem.description}
                   </p>
                 </div>
@@ -460,6 +272,31 @@ function ProblemsSection() {
             );
           })}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-24 text-center max-w-5xl mx-auto"
+        >
+          <div className="p-10 md:p-16 bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100 relative overflow-hidden text-slate-800 group">
+            {/* Subtle animated background in box */}
+            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02]" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-blue-100/30 transition-colors duration-500" />
+
+            <h3 className="text-2xl md:text-4xl font-medium leading-relaxed relative z-10 tracking-tight">
+              星河卓越通过<span className="font-bold text-slate-900 border-b-4 border-blue-200">系统化方式</span>，<br />
+              帮助企业将分散的 AI 能力组织为<br />
+              <span className="text-blue-600 font-extrabold mx-1">可运行</span>、
+              <span className="text-blue-600 font-extrabold mx-1">可治理</span>、
+              <span className="text-blue-600 font-extrabold mx-1">可演进</span>
+              的系统能力，<br />
+              <span className="text-slate-400 text-xl md:text-2xl mt-6 block font-normal">
+                而非一次性工具或实验性应用。
+              </span>
+            </h3>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -471,92 +308,29 @@ function CoreCharacteristicsSection() {
 
   const characteristics = [
     {
-      icon: Shield,
-      title: '可信基础',
-      description: '围绕数据治理、模型使用与安全控制，构建支撑智能能力长期运行的可信基础。',
-      color: 'from-blue-500 to-cyan-500',
+      icon: Cpu,
+      title: '可运行的系统能力',
+      description: '不是“功能交付”，而是可在业务中持续运行的系统形态。',
+      color: 'from-blue-600 to-cyan-600',
     },
     {
       icon: Target,
-      title: '长期运行',
-      description: '平台能力以持续使用为目标进行设计，支持智能能力在真实业务环境中的长期运行与演进。',
-      color: 'from-purple-500 to-pink-500',
+      title: '面向长期的设计理念',
+      description: '从系统架构、能力组织到治理机制，均以长期使用为前提。',
+      color: 'from-purple-600 to-pink-600',
     },
     {
-      icon: Users,
-      title: '企业级',
-      description: '以企业与行业场景为核心，支持智能能力深度融入复杂业务体系。',
-      color: 'from-indigo-500 to-purple-500',
+      icon: Shield,
+      title: '面向企业与行业的实践经验',
+      description: '服务于对稳定性、合规性与可靠性要求较高的组织与行业场景。',
+      color: 'from-indigo-600 to-purple-600',
     },
   ];
 
   return (
-    <section className="relative py-32 bg-gradient-to-br from-cyan-50/25 via-blue-50/30 to-indigo-50/25">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* 数据流动线条 */}
-        <svg className="absolute inset-0 w-full h-full opacity-5">
-          {[...Array(5)].map((_, i) => (
-            <motion.path
-              key={i}
-              d={`M ${i * 20}% 0 Q ${i * 20 + 10}% 50 ${i * 20}% 100`}
-              stroke="url(#blueGradient)"
-              strokeWidth="2"
-              fill="none"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "linear",
-                delay: i * 0.5,
-              }}
-            />
-          ))}
-          <defs>
-            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.8" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <motion.div
-          className="absolute w-80 h-80 rounded-full bg-gradient-to-br from-cyan-300/8 to-blue-300/8 blur-3xl"
-          animate={{
-            x: [0, 80, 0],
-            y: [0, -60, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ top: '10%', right: '10%' }}
-        />
-
-        {/* AI脉冲点 */}
-        {[...Array(10)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-3 h-3 rounded-full bg-cyan-500/20"
-            style={{
-              top: `${15 + (i * 8)}%`,
-              right: `${10 + (i * 9)}%`,
-            }}
-            animate={{
-              scale: [0, 1.5, 0],
-              opacity: [0, 0.6, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeOut",
-              delay: i * 0.2,
-            }}
-          />
-        ))}
-      </div>
+    <section className="relative py-32 bg-slate-50 overflow-hidden">
+      <TechBackground />
+      <div className="absolute inset-0 bg-white/50 backdrop-blur-[2px]" />
 
       <div ref={ref} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <motion.div
@@ -565,12 +339,19 @@ function CoreCharacteristicsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
-            星河卓越的
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              核心特征
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 font-semibold text-sm tracking-wide mb-6">
+            <Sparkles className="w-4 h-4" />
+            CORE VALUE
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 text-slate-900 tracking-tight">
+            我们的
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent px-2">
+              核心能力与特点
             </span>
           </h2>
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            围绕 AI 的长期运行需求，星河卓越构建了以下核心能力
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
@@ -582,76 +363,28 @@ function CoreCharacteristicsSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="group relative bg-white/60 backdrop-blur-xl rounded-2xl p-10 border border-white/40 shadow-lg hover:shadow-2xl transition-all duration-300"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 100%)',
-                }}
+                whileHover={{ y: -5 }}
+                className="group relative bg-white rounded-[2rem] p-8 lg:p-12 shadow-xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 border border-slate-100"
               >
-                {/* 玻璃反光效果 */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
-                
-                {/* 背景渐变装饰 */}
-                <motion.div
-                  className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    opacity: [0.1, 0.15, 0.1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: index * 0.3,
-                  }}
-                >
-                  <div className={`w-full h-full bg-gradient-to-br ${char.color} rounded-full blur-2xl`} />
-                </motion.div>
-
-                {/* 装饰粒子 */}
-                {[...Array(3)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1 h-1 rounded-full bg-primary/30"
-                    style={{
-                      top: `${20 + i * 30}%`,
-                      right: `${10 + i * 15}%`,
-                    }}
-                    animate={{
-                      y: [0, -10, 0],
-                      opacity: [0.2, 0.6, 0.2],
-                    }}
-                    transition={{
-                      duration: 2 + i,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: i * 0.3,
-                    }}
-                  />
-                ))}
-
-                <div className="relative">
-                  <motion.div
-                    className={`inline-flex p-5 rounded-xl bg-gradient-to-br ${char.color} mb-8 shadow-lg`}
-                    whileHover={{ scale: 1.1, rotate: -5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <Icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  
-                  <h3 className="text-2xl font-semibold mb-6">
-                    {char.title}
-                  </h3>
-                  
-                  <p className="text-foreground/75 leading-relaxed text-lg">
-                    {char.description}
-                  </p>
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${char.color} flex items-center justify-center mb-8 shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform duration-300 ring-4 ring-slate-50`}>
+                  <Icon className="w-8 h-8 text-white relative z-10" />
                 </div>
+
+                <h3 className="text-2xl font-bold mb-4 text-slate-800 tracking-tight">
+                  {char.title}
+                </h3>
+
+                <p className="text-slate-600 leading-relaxed text-lg">
+                  {char.description}
+                </p>
+
+                <div className={`absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r ${char.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-[2rem]`} />
               </motion.div>
             );
           })}
-        </div>
-      </div>
-    </section>
+        </div >
+      </div >
+    </section >
   );
 }
 
@@ -660,385 +393,92 @@ function HowWeBuildSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-32 bg-gradient-to-br from-indigo-50/25 via-purple-50/30 to-pink-50/20">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* AI电路板效果 */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/4 left-1/4 w-40 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-          <div className="absolute top-1/2 right-1/4 w-32 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
-          <div className="absolute bottom-1/3 left-1/3 w-48 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+    <section className="relative py-32 bg-white text-slate-900 overflow-hidden">
+      <TechBackground />
+
+      <div ref={ref} className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-semibold text-sm tracking-wide mb-8">
+              <Layers className="w-4 h-4" />
+              OUR APPROACH
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-8 leading-tight text-slate-900 tracking-tight">
+              我们如何推进<br />
+              <span className="text-blue-600">AI 在组织中的落地</span>
+            </h2>
+
+            <p className="text-xl text-slate-500 mb-10 font-medium">
+              在实际实践中，星河卓越遵循以下原则：
+            </p>
+
+            <div className="space-y-6">
+              {[
+                {
+                  text: "以业务体系为中心，而非技术能力堆叠",
+                  desc: "Business System Centric"
+                },
+                {
+                  text: "以组织运行需求为导向，设计 AI 的参与方式",
+                  desc: "Organization Needs Oriented"
+                },
+                {
+                  text: "以治理与责任为前提，确保系统可控、可追溯",
+                  desc: "Governance & Responsibility"
+                }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  className="flex items-center gap-6 group p-4 rounded-2xl hover:bg-slate-50 transition-colors"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2 + i * 0.1 }}
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-white border-2 border-slate-100 flex items-center justify-center shrink-0 group-hover:border-blue-500 group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-all duration-300">
+                    <span className="text-xl font-bold text-slate-300 group-hover:text-blue-600 font-mono transition-colors">0{i + 1}</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg sm:text-xl font-bold text-slate-800 mb-1 group-hover:text-blue-700 transition-colors">{item.text}</h4>
+                    <p className="text-xs text-slate-400 uppercase tracking-widest font-semibold">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right Side Quote / Visionary Element */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="relative z-10 bg-gradient-to-br from-white to-blue-50 p-12 lg:p-14 rounded-[3rem] border border-white shadow-[0_30px_60px_-15px_rgba(59,130,246,0.1)]">
+              <div className="absolute top-10 right-10 opacity-10">
+                <Sparkles className="w-24 h-24 text-blue-600" />
+              </div>
+              <Sparkles className="w-10 h-10 text-blue-600 mb-8" />
+              <p className="text-2xl sm:text-4xl font-serif italic leading-relaxed text-slate-800 relative z-10">
+                "我们相信，<br />
+                只有被组织真正接纳并长期使用的 AI，<br />
+                才具有真正的业务价值。"
+              </p>
+              <div className="mt-10 flex items-center gap-4">
+                <div className="w-12 h-1 bg-blue-600 rounded-full" />
+                <span className="text-slate-400 uppercase tracking-widest text-xs font-bold">XINGHE AI VISION</span>
+              </div>
+            </div>
+
+            {/* Decorative Background Elements */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/30 blur-[80px] rounded-full -z-10" />
+          </motion.div>
+
         </div>
-
-        <motion.div
-          className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-indigo-300/8 to-purple-300/8 blur-3xl"
-          animate={{
-            x: [0, -70, 0],
-            y: [0, 70, 0],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ top: '20%', left: '10%' }}
-        />
-
-        {/* 浮动图标 */}
-        <motion.div
-          className="absolute top-1/3 right-[15%]"
-          animate={{
-            y: [0, -25, 0],
-            rotate: [0, 15, 0],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <Cpu className="w-10 h-10 text-purple-500/10" />
-        </motion.div>
-      </div>
-
-      <div ref={ref} className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
-            我们如何
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              构建平台能力
-            </span>
-          </h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative group bg-white/60 backdrop-blur-xl p-12 md:p-16 rounded-3xl border border-white/40 shadow-xl shadow-purple-500/5 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 max-w-4xl mx-auto"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 100%)',
-          }}
-        >
-          {/* 玻璃反光效果 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
-          
-          {/* 边框光晕 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10" />
-          
-          {/* 角落装饰 */}
-          <motion.div
-            className="absolute top-8 right-8"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          >
-            <Sparkles className="w-7 h-7 text-purple-500/20" />
-          </motion.div>
-          
-          <div className="relative space-y-8">
-            <p className="text-xl text-foreground/80 leading-relaxed">
-              星河卓越并非围绕单一产品或功能展开，<br />
-              而是以平台化方式构建完整的智能能力体系。
-            </p>
-            <p className="text-lg text-foreground/75 leading-relaxed">
-              平台能力覆盖 Agent 构建与运行、<br />
-              知识与数据治理、模型能力管理、<br />
-              流程与权限控制以及运行安全等关键环节，<br />
-              为智能能力在业务体系中的长期应用提供基础支撑。
-            </p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="pt-8 flex justify-center"
-            >
-              <Link
-                to="/capabilities"
-                className="group/link inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 font-semibold"
-              >
-                查看完整平台能力体系
-                <ArrowRight className="w-5 h-5 group-hover/link:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function OurPracticeSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section className="relative py-32 bg-gradient-to-br from-green-50/20 via-emerald-50/25 to-teal-50/20">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* 生长的藤蔓效果 */}
-        <svg className="absolute inset-0 w-full h-full opacity-5">
-          <motion.path
-            d="M 10% 100% Q 20% 70% 30% 50% T 50% 20%"
-            stroke="url(#greenGradient)"
-            strokeWidth="2"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <defs>
-            <linearGradient id="greenGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#10b981" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.8" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <motion.div
-          className="absolute w-80 h-80 rounded-full bg-gradient-to-br from-green-300/8 to-emerald-300/8 blur-3xl"
-          animate={{
-            x: [0, 80, 0],
-            y: [0, -70, 0],
-          }}
-          transition={{
-            duration: 21,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ bottom: '15%', right: '10%' }}
-        />
-
-        {/* 能量波动点 */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2.5 h-2.5 rounded-full bg-emerald-500/25"
-            style={{
-              bottom: `${20 + i * 12}%`,
-              right: `${15 + i * 10}%`,
-            }}
-            animate={{
-              scale: [1, 2, 1],
-              opacity: [0.3, 0.7, 0.3],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.4,
-            }}
-          />
-        ))}
-      </div>
-
-      <div ref={ref} className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
-            我们的
-            <span className="bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
-              实践方式
-            </span>
-          </h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative group bg-white/60 backdrop-blur-xl p-12 md:p-16 rounded-3xl border border-white/40 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500 max-w-4xl mx-auto"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 100%)',
-          }}
-        >
-          {/* 玻璃反光效果 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
-          
-          {/* 边框光晕 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-500/10 via-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10" />
-          
-          {/* 装饰图标 */}
-          <motion.div
-            className="absolute bottom-8 left-8"
-            animate={{
-              rotate: [0, -15, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <Zap className="w-6 h-6 text-emerald-500/20" />
-          </motion.div>
-          
-          <div className="relative space-y-8">
-            <p className="text-xl text-foreground/80 leading-relaxed">
-              在实际业务环境中，<br />
-              星河卓越的平台能力已支持多种智能应用形态的运行。
-            </p>
-            <p className="text-lg text-foreground/75 leading-relaxed">
-              通过平台化机制，<br />
-              智能能力可以根据业务需求进行配置、组合与演进，<br />
-              而无需频繁推倒重来。
-            </p>
-            <p className="text-lg text-foreground/75 leading-relaxed">
-              我们更关注能力在真实环境中的持续使用状态，<br />
-              而非一次性的展示效果。
-            </p>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function OurBoundariesSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section className="relative py-32 bg-gradient-to-br from-amber-50/30 via-orange-50/25 to-yellow-50/20">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* 边界线条 */}
-        <svg className="absolute inset-0 w-full h-full opacity-5">
-          <motion.rect
-            x="10%" y="20%" width="80%" height="60%"
-            stroke="url(#amberGradient)"
-            strokeWidth="2"
-            fill="none"
-            rx="20"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-          <defs>
-            <linearGradient id="amberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#f97316" stopOpacity="0.8" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <motion.div
-          className="absolute w-96 h-96 rounded-full bg-gradient-to-br from-amber-300/8 to-orange-300/8 blur-3xl"
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 70, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ top: '15%', right: '8%' }}
-        />
-
-        {/* 边界标记点 */}
-        {[...Array(4)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-3 h-3 rounded-full bg-amber-500/30 border-2 border-amber-500/50"
-            style={{
-              top: i < 2 ? '25%' : '70%',
-              left: i % 2 === 0 ? '15%' : '85%',
-            }}
-            animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.5,
-            }}
-          />
-        ))}
-      </div>
-
-      <div ref={ref} className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
-            我们的
-            <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-              定位边界
-            </span>
-          </h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative group bg-white/60 backdrop-blur-xl p-12 md:p-16 rounded-3xl border border-white/40 shadow-xl shadow-amber-500/5 hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-500 max-w-4xl mx-auto"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 100%)',
-          }}
-        >
-          {/* 玻璃反光效果 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
-          
-          {/* 边框光晕 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10" />
-          
-          {/* 装饰元素 */}
-          <motion.div
-            className="absolute top-8 left-8"
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            <div className="w-5 h-5 border-2 border-amber-500/20 rounded-sm" />
-          </motion.div>
-          
-          <div className="relative space-y-8">
-            <p className="text-xl text-foreground/80 leading-relaxed">
-              星河卓越并不以一次性交付、<br />
-              或单点功能实现作为主要目标。
-            </p>
-            <p className="text-lg text-foreground/75 leading-relaxed">
-              我们关注的是：<br />
-              如何为企业与行业提供一个<br />
-              <span className="text-primary font-semibold text-xl">可以长期使用、持续演进的智能平台基础</span>。
-            </p>
-            <p className="text-lg text-foreground/75 leading-relaxed">
-              这一定位，决定了我们始终以平台能力与运行体系为核心，<br />
-              而非短期解决方案。
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
@@ -1049,204 +489,33 @@ function ClosingSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-32 bg-gradient-to-br from-blue-50/30 via-indigo-50/35 to-purple-50/25">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* 汇聚的能量流 */}
-        <svg className="absolute inset-0 w-full h-full opacity-8">
-          {[...Array(8)].map((_, i) => {
-            const angle = (i / 8) * Math.PI * 2;
-            const startX = 50 + Math.cos(angle) * 40;
-            const startY = 50 + Math.sin(angle) * 40;
-            return (
-              <motion.line
-                key={i}
-                x1={`${startX}%`}
-                y1={`${startY}%`}
-                x2="50%"
-                y2="50%"
-                stroke="url(#convergingGradient)"
-                strokeWidth="1"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 0.3 }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.2,
-                }}
-              />
-            );
-          })}
-          <defs>
-            <linearGradient id="convergingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#6366f1" stopOpacity="0" />
-              <stop offset="100%" stopColor="#8b5cf6" stopOpacity="1" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <motion.div
-          className="absolute w-80 h-80 rounded-full bg-gradient-to-br from-blue-300/10 to-indigo-300/10 blur-3xl"
-          animate={{
-            x: [0, 60, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ top: '20%', left: '50%', transform: 'translateX(-50%)' }}
-        />
-
-        {/* 核心光芒 */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 w-32 h-32 -translate-x-1/2 -translate-y-1/2"
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-2xl" />
-        </motion.div>
-      </div>
-
-      <div ref={ref} className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
+    <section className="relative py-32 bg-white">
+      <div ref={ref} className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="relative group bg-white/60 backdrop-blur-xl p-16 md:p-20 rounded-3xl border border-white/40 shadow-xl shadow-primary/10 hover:shadow-2xl hover:shadow-primary/15 transition-all duration-500 max-w-3xl mx-auto"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.55) 100%)',
-          }}
+          transition={{ duration: 0.8 }}
         >
-          {/* 玻璃反光效果 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/25 via-transparent to-transparent pointer-events-none" />
-          
-          {/* 边框光晕 */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10" />
-          
-          {/* 顶部装饰 */}
-          <motion.div
-            className="absolute -top-4 left-1/2 -translate-x-1/2"
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <Sparkles className="w-8 h-8 text-primary/40" />
-          </motion.div>
-          
-          <p className="relative text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground/80 leading-relaxed">
-            星河卓越，<br />
-            致力于成为企业与行业<br />
-            <span className="bg-gradient-to-r from-primary via-accent to-purple-600 bg-clip-text text-transparent">
-              长期可信的智能平台基础
-            </span>
-          </p>
-
-          {/* 底部装饰点 */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-            {[...Array(3)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="w-2 h-2 rounded-full bg-primary/30"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.3, 0.8, 0.3],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.3,
-                }}
-              />
-            ))}
+          <div className="w-16 h-16 mx-auto bg-blue-600 rounded-2xl flex items-center justify-center mb-10 shadow-lg shadow-blue-500/30 transform rotate-3">
+            <Target className="w-8 h-8 text-white" />
           </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
 
-function BottomCTASection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section className="relative py-32 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* 向前的箭头效果 */}
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{
-              top: `${30 + i * 10}%`,
-              left: `${10 + i * 15}%`,
-            }}
-            animate={{
-              x: [0, 50, 0],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.4,
-            }}
-          >
-            <ArrowRight className="w-6 h-6 text-primary/20" />
-          </motion.div>
-        ))}
-      </div>
-
-      <div ref={ref} className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="space-y-12"
-        >
-          <h2 className="text-4xl sm:text-5xl font-semibold text-foreground/80">
-            了解更多
+          <h2 className="text-2xl font-bold text-slate-500 uppercase tracking-widest mb-6 border-b border-slate-200 pb-6 inline-block">
+            星河卓越的定位与愿景
           </h2>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                to="/capabilities"
-                className="group inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-primary to-accent text-white rounded-xl hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 text-lg font-semibold"
-              >
-                查看平台能力
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </Link>
-            </motion.div>
+          <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-12 leading-tight">
+            行业与企业在 AI 系统建设<br />
+            与长期运行过程中的<br />
+            <span className="text-blue-600">长期合作伙伴</span>
+          </h3>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                to="/agent"
-                className="group inline-flex items-center justify-center gap-3 px-10 py-5 bg-white border-2 border-primary text-primary rounded-xl hover:bg-primary hover:text-white hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 text-lg font-semibold"
-              >
-                了解 Agent 体系
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
+          <p className="text-2xl text-slate-600 leading-relaxed font-light">
+            我们将持续投入于行业级 AI 系统能力的建设，<br />
+            推动 AI 从“可用”走向“<span className="font-semibold text-slate-900 border-b-2 border-blue-600/30">可长期可依赖</span>”。
+          </p>
+
+          <div className="w-full h-8" />
         </motion.div>
       </div>
     </section>

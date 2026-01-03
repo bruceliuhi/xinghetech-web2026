@@ -1,16 +1,16 @@
 import { motion } from 'motion/react';
-const heroBg = '/images/hero-bg-capabilities.png';
-const summaryBg = '/images/summary-bg.png';
-const agentManagementImg = '/images/agent-management.png';
-const knowledgeGovernanceImg = '/images/knowledge-governance.png';
-const modelEvolutionImg = '/images/model-evolution.png';
-const processPermissionImg = '/images/process-permission.png';
-const evaluationSecurityImg = '/images/evaluation-security.png';
-const runtimeIntegrationImg = '/images/runtime-integration.png';
+const heroBg = '/images/hero-bg-capabilities.webp';
+const summaryBg = '/images/summary-bg.webp';
+const agentManagementImg = '/images/agent-management.webp';
+const knowledgeGovernanceImg = '/images/knowledge-governance.webp';
+const modelEvolutionImg = '/images/model-evolution.webp';
+const processPermissionImg = '/images/process-permission.webp';
+const evaluationSecurityImg = '/images/evaluation-security.webp';
+const runtimeIntegrationImg = '/images/runtime-integration.webp';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { 
+import {
   Layers, Database, Brain, Shield, Activity, Server, ArrowRight, ChevronDown,
   Users, RefreshCw, Boxes, FolderOpen, GitBranch, ShieldCheck,
   Plug, Package, TrendingUp, Workflow, UserCheck, FileCheck,
@@ -132,7 +132,7 @@ export function CapabilitiesPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section 
+      <section
         ref={heroRef}
         className="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-[#FAFCFF] via-[#F8FAFF] to-[#F9FBFF] overflow-hidden"
       >
@@ -195,14 +195,14 @@ export function CapabilitiesPage() {
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
-          
+
           {/* Soft Color Flow */}
           <motion.div
-             className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 via-purple-500/5 to-cyan-500/5 mix-blend-overlay"
-             animate={{
-               opacity: [0.2, 0.5, 0.2],
-             }}
-             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 via-purple-500/5 to-cyan-500/5 mix-blend-overlay"
+            animate={{
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
       </section>
@@ -221,7 +221,7 @@ export function CapabilitiesPage() {
                 >
                   {/* Gradient hover effect */}
 
-                  
+
                   {/* Content */}
                   <div className="flex items-center gap-2 relative z-10">
                     <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-[#E8F0FF] flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
@@ -230,7 +230,7 @@ export function CapabilitiesPage() {
                     <span className="hidden sm:inline group-hover:font-semibold transition-all">{capability.title}</span>
                     <span className="sm:hidden text-[10px] font-medium">{capability.title.split(' ')[0]}</span>
                   </div>
-                  
+
                   {/* Bottom indicator */}
                   <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2C4BFF] scale-x-0 group-hover:scale-x-100 transition-transform"></div>
                 </button>
@@ -251,7 +251,7 @@ export function CapabilitiesPage() {
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-80 h-80 bg-gradient-to-br from-blue-200/20 to-indigo-200/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-purple-200/20 to-pink-200/20 rounded-full blur-3xl"></div>
-          
+
           {/* Floating sparkles */}
           <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
@@ -267,7 +267,7 @@ export function CapabilitiesPage() {
           >
             <Sparkles className="w-10 h-10 text-purple-400" />
           </motion.div>
-          
+
           {/* Background Image */}
           <img src={summaryBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
         </div>
@@ -286,11 +286,11 @@ export function CapabilitiesPage() {
                 平台能力总结
               </span>
             </div>
-            
+
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-[#2C4BFF] to-[#9122FA]">
               一个面向长期运行的 AI 平台能力体系
             </h2>
-            
+
             <div className="max-w-3xl mx-auto">
               <p className="text-foreground/80 leading-relaxed text-[14px]">
                 星河卓越的平台能力并非围绕单一功能或应用场景构建，<br />
@@ -298,7 +298,7 @@ export function CapabilitiesPage() {
                 为 AI 能力在复杂业务体系中的稳定应用提供基础支撑。
               </p>
             </div>
-            
+
             {/* Capability grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12">
               {capabilities.map((cap, idx) => {
@@ -341,7 +341,7 @@ export function CapabilitiesPage() {
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-cyan-200/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 right-10 w-64 h-64 bg-gradient-to-br from-purple-200/20 to-pink-200/20 rounded-full blur-3xl"></div>
-          
+
           {/* Decorative lines */}
         </div>
 
@@ -362,7 +362,7 @@ export function CapabilitiesPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link 
+              <Link
                 to="/#agent"
                 className="group relative px-8 py-4 rounded-xl bg-white/80 backdrop-blur-sm border border-blue-200/50 hover:border-blue-400/50 transition-all overflow-hidden"
               >
@@ -384,7 +384,7 @@ export function CapabilitiesPage() {
 
               <div className="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-border to-transparent"></div>
 
-              <Link 
+              <Link
                 to="/#scenarios"
                 className="group relative px-8 py-4 rounded-xl bg-white/80 backdrop-blur-sm border border-purple-200/50 hover:border-purple-400/50 transition-all overflow-hidden"
               >
@@ -426,7 +426,7 @@ function CapabilitySection({ capability, index }: CapabilitySectionProps) {
   const [DecorIcon1, DecorIcon2, DecorIcon3] = capability.decorativeIcons;
 
   return (
-    <section 
+    <section
       id={capability.id}
       ref={ref}
       className={`py-24 relative overflow-hidden ${index % 2 === 0 ? 'bg-white' : 'bg-[#F8F9FE]'}`}
@@ -439,31 +439,31 @@ function CapabilitySection({ capability, index }: CapabilitySectionProps) {
         >
           {/* Header Section */}
           <div className="flex flex-col md:flex-row md:items-center gap-6 mb-16 border-b border-border/10 pb-8">
-             <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
 
-               <div className={`p-3 rounded-xl bg-[#E8F0FF]`}>
-                 <svg width="0" height="0" className="absolute">
-                   <defs>
-                     <linearGradient id={`section-gradient-${capability.id}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                       <stop offset="0%" stopColor="#2C4BFF" />
-                       <stop offset="100%" stopColor="#9122FA" />
-                     </linearGradient>
-                   </defs>
-                 </svg>
-                 <Icon className="w-8 h-8" style={{ stroke: `url(#section-gradient-${capability.id})` }} />
-               </div>
-             </div>
-             <div>
-               <h2 className="text-3xl font-bold text-foreground text-[36px]">
-                 {capability.title}
-               </h2>
-               <p className="text-foreground/70 text-[16px] whitespace-nowrap mt-2">
-                 {capability.description}
-               </p>
+              <div className={`p-3 rounded-xl bg-[#E8F0FF]`}>
+                <svg width="0" height="0" className="absolute">
+                  <defs>
+                    <linearGradient id={`section-gradient-${capability.id}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#2C4BFF" />
+                      <stop offset="100%" stopColor="#9122FA" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <Icon className="w-8 h-8" style={{ stroke: `url(#section-gradient-${capability.id})` }} />
+              </div>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-foreground text-[36px]">
+                {capability.title}
+              </h2>
+              <p className="text-foreground/70 text-[16px] whitespace-nowrap mt-2">
+                {capability.description}
+              </p>
 
-             </div>
+            </div>
           </div>
-          
+
           <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
             {/* Content Column */}
             <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''} space-y-8`}>
@@ -496,24 +496,24 @@ function CapabilitySection({ capability, index }: CapabilitySectionProps) {
               </div>
 
               <div className="pt-6 border-t border-border/10">
-                 <div className="flex items-start gap-3">
-                   <div className="mt-1 p-1 rounded-full bg-blue-100/50">
-                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                   </div>
-                   <div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 p-1 rounded-full bg-blue-100/50">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                  </div>
+                  <div>
 
-                     <p className="text-foreground/80 font-medium italic text-[14px]">
-                       "{capability.value}"
-                     </p>
-                   </div>
-                 </div>
+                    <p className="text-foreground/80 font-medium italic text-[14px]">
+                      "{capability.value}"
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Visual Column */}
             <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''} relative`}>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] group">
-                <motion.img 
+                <motion.img
                   src={{
                     'agent-management': agentManagementImg,
                     'knowledge-governance': knowledgeGovernanceImg,
@@ -530,7 +530,7 @@ function CapabilitySection({ capability, index }: CapabilitySectionProps) {
                   whileHover={{ scale: 1.05 }}
                 />
               </div>
-              
+
               {/* Decorative elements behind image */}
               <div className="absolute -z-10 top-8 -right-8 w-full h-full border-2 border-blue-100 rounded-2xl hidden lg:block"></div>
               <div className="absolute -z-10 -bottom-8 -left-8 w-32 h-32 bg-blue-50 rounded-full blur-3xl opacity-60"></div>
