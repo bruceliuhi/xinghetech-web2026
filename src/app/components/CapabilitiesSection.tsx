@@ -112,7 +112,7 @@ export function CapabilitiesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-[48px] bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-1">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-1">
             我们做什么｜行业 AI 运行系统
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -200,7 +200,7 @@ export function CapabilitiesSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col items-center text-center mt-24 mb-12 max-w-3xl mx-auto w-full"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-1">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-[#1e1b4b] via-[#3b82f6] to-[#1e1b4b] bg-clip-text text-transparent pb-1">
             实践与运行经验
           </h2>
           <p className="text-xl text-slate-600 mt-4 leading-relaxed max-w-2xl">

@@ -85,7 +85,7 @@ export function BackgroundSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-6"
         >
-          <h2 className="sm:text-4xl font-bold text-foreground/80 leading-tight text-[rgb(26,31,46)] text-[48px]">
+          <h2 className="text-xl sm:text-4xl lg:text-5xl font-bold text-foreground/80 leading-tight text-[rgb(26,31,46)]">
             在行业与企业场景中，
             <span className="block mt-2 text-foreground/90 text-[rgb(26,31,46)]">AI 的关键不在模型，而在体系能力</span>
           </h2>

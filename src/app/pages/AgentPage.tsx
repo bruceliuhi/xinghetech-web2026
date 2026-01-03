@@ -54,12 +54,12 @@ const agents = [
 
 // Platform capabilities data
 const platformCapabilities = [
-  { icon: Layers, title: 'Agent 构建', color: 'from-blue-500 to-cyan-500' },
-  { icon: Database, title: '知识治理', color: 'from-indigo-500 to-purple-500' },
-  { icon: Brain, title: '模型能力', color: 'from-blue-500 to-indigo-500' },
-  { icon: Shield, title: '流程权限', color: 'from-cyan-500 to-blue-500' },
-  { icon: Activity, title: '评测安全', color: 'from-purple-500 to-indigo-500' },
-  { icon: Server, title: '系统集成', color: 'from-teal-500 to-cyan-500' },
+  { icon: Layers, title: 'Agent 构建', color: 'from-blue-500 to-cyan-500', desc: '统一的 Agent 编排与生命周期管理' },
+  { icon: Database, title: '知识治理', color: 'from-indigo-500 to-purple-500', desc: '多源知识接入与向量化处理' },
+  { icon: Brain, title: '模型能力', color: 'from-blue-500 to-indigo-500', desc: '主流大模型接入与精调适配' },
+  { icon: Shield, title: '流程权限', color: 'from-cyan-500 to-blue-500', desc: '灵活的业务流程与权限管控' },
+  { icon: Activity, title: '评测安全', color: 'from-purple-500 to-indigo-500', desc: '全方位的效果评测与安全防护' },
+  { icon: Server, title: '系统集成', color: 'from-teal-500 to-cyan-500', desc: '标准化的 API 开放与系统对接' },
 ];
 
 export function AgentPage() {
@@ -300,7 +300,7 @@ function ProductMatrixSection() {
             <Network className="w-4 h-4 text-primary" />
             <span className="font-medium text-primary">核心产品</span>
           </div>
-          <h2 className="text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               产品矩阵
             </span>
@@ -376,7 +376,7 @@ function AgentArchitectureSection() {
             <Bot className="w-4 h-4 text-primary" />
             <span className="font-medium text-primary">产品架构</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[48px]">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4">
             Agent：智能能力的组织与运行形态
           </h2>
         </motion.div>
@@ -655,7 +655,7 @@ function AgentBuilderSection() {
               <span className="font-medium">核心能力</span>
             </div>
 
-            <h2 className="text-5xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6">
               可视化<br />
               <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                 智能体构建平台
@@ -735,7 +735,7 @@ function KnowledgeBaseSection() {
               <span className="font-medium">知识底座</span>
             </div>
 
-            <h2 className="text-5xl font-bold mb-6">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6">
               企业级<br />
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 知识库与数据治理
@@ -877,7 +877,7 @@ function PlatformCapabilitiesSection() {
             <Settings className="w-4 h-4 text-primary" />
             <span className="font-medium text-primary">核心特性</span>
           </div>
-          <h2 className="text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               平台核心能力
             </span>
@@ -971,7 +971,7 @@ function AgentTypesSection() {
             <Bot className="w-4 h-4 text-primary" />
             <span className="font-medium text-primary">智能体类型</span>
           </div>
-          <h2 className="text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               丰富的智能体类型
             </span>
@@ -1074,7 +1074,7 @@ function UseCasesSection() {
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="font-medium text-primary">应用场景</span>
           </div>
-          <h2 className="text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               典型应用场景
             </span>

@@ -76,7 +76,7 @@ export function PracticesSection() {
           className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto w-full"
         >
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 text-slate-900 tracking-tight">
             实践与运行经验
           </h2>
           <p className="text-xl text-slate-600 mt-4 leading-relaxed max-w-2xl">
