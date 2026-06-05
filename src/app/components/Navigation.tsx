@@ -6,7 +6,7 @@ const logoImage = '/images/logo-nav.png';
 
 const agentProducts = [
   { label: 'Agent智能体中台', href: '/agent' },
-  { label: '星河影擎', href: '/agent/yingqing' },
+  { label: '星河影擎', href: '/sites/aivideo-content-growth-factory/' },
   { label: '星河视擎', href: '/agent/shiqing' },
   { label: '星河文擎', href: '/agent/wenqing' },
 ];
@@ -19,6 +19,8 @@ const navItems = [
   { label: '案例与实践', href: '/practices' },
   { label: '关于我们', href: '/about' },
 ];
+
+const isStaticSiteLink = (href: string) => href.startsWith('/sites/');
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,18 +84,34 @@ export function Navigation() {
                     className={`${isAgentMenuOpen ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 translate-y-2'} absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 rounded-xl border border-blue-100 bg-white/95 p-2 shadow-xl shadow-blue-900/10 backdrop-blur-xl transition-all duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0`}
                     role="menu"
                   >
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        to={child.href}
-                        onClick={() => handleClick(child.href)}
-                        className={`block rounded-lg px-4 py-3 text-sm transition-colors ${location.pathname === child.href ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-foreground/75 hover:bg-blue-50 hover:text-blue-700'}`}
-                        role="menuitem"
-                        aria-current={location.pathname === child.href ? 'page' : undefined}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                    {item.children.map((child) => {
+                      const isActive = location.pathname === child.href || (isStaticSiteLink(child.href) && location.pathname.startsWith(child.href));
+                      const className = `block rounded-lg px-4 py-3 text-sm transition-colors ${isActive ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-foreground/75 hover:bg-blue-50 hover:text-blue-700'}`;
+
+                      return isStaticSiteLink(child.href) ? (
+                        <a
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => handleClick(child.href)}
+                          className={className}
+                          role="menuitem"
+                          aria-current={isActive ? 'page' : undefined}
+                        >
+                          {child.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={child.href}
+                          to={child.href}
+                          onClick={() => handleClick(child.href)}
+                          className={className}
+                          role="menuitem"
+                          aria-current={isActive ? 'page' : undefined}
+                        >
+                          {child.label}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               ) : item.href.startsWith('/#') ? (
@@ -149,16 +167,30 @@ export function Navigation() {
                     {item.label}
                   </div>
                   <div className="space-y-1">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        to={child.href}
-                        onClick={() => handleClick(child.href)}
-                        className={`block w-full rounded-lg px-4 py-3 text-left transition-colors ${location.pathname === child.href ? 'bg-white text-blue-700 font-semibold shadow-sm' : 'text-foreground/75 hover:bg-white'}`}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                    {item.children.map((child) => {
+                      const isActive = location.pathname === child.href || (isStaticSiteLink(child.href) && location.pathname.startsWith(child.href));
+                      const className = `block w-full rounded-lg px-4 py-3 text-left transition-colors ${isActive ? 'bg-white text-blue-700 font-semibold shadow-sm' : 'text-foreground/75 hover:bg-white'}`;
+
+                      return isStaticSiteLink(child.href) ? (
+                        <a
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => handleClick(child.href)}
+                          className={className}
+                        >
+                          {child.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={child.href}
+                          to={child.href}
+                          onClick={() => handleClick(child.href)}
+                          className={className}
+                        >
+                          {child.label}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               ) : (
