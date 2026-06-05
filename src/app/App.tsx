@@ -6,6 +6,7 @@ import { PerformanceOptimizer } from './components/PerformanceOptimizer';
 import { HomePage } from './pages/HomePage';
 import { CapabilitiesPage } from './pages/CapabilitiesPage';
 import { AgentPage } from './pages/AgentPage';
+import { AgentProductPage } from './pages/AgentProductPage';
 import { ScenariosPage } from './pages/ScenariosPage';
 import { PracticesPage } from './pages/PracticesPage';
 import { AboutPage } from './pages/AboutPage';
@@ -48,6 +49,9 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/capabilities" element={<CapabilitiesPage />} />
             <Route path="/agent" element={<AgentPage />} />
+            <Route path="/agent/yingqing" element={<AgentProductPage product="yingqing" />} />
+            <Route path="/agent/shiqing" element={<AgentProductPage product="shiqing" />} />
+            <Route path="/agent/wenqing" element={<AgentProductPage product="wenqing" />} />
             <Route path="/scenarios" element={<ScenariosPage />} />
             <Route path="/practices" element={<PracticesPage />} />
             <Route path="/about" element={<AboutPage />} />
