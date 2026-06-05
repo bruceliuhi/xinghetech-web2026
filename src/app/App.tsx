@@ -9,6 +9,7 @@ import { AgentPage } from './pages/AgentPage';
 import { ScenariosPage } from './pages/ScenariosPage';
 import { PracticesPage } from './pages/PracticesPage';
 import { AboutPage } from './pages/AboutPage';
+import { NewsDetailPage } from './pages/NewsDetailPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 function ScrollToHashElement() {
@@ -50,6 +51,7 @@ export default function App() {
             <Route path="/scenarios" element={<ScenariosPage />} />
             <Route path="/practices" element={<PracticesPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/news/:id" element={<NewsDetailPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

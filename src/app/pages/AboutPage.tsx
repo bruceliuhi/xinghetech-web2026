@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Shield, Target, Users, AlertTriangle, Layers, ArrowRight, Sparkles, Zap, Cpu } from 'lucide-react';
+import { Shield, Target, Users, AlertTriangle, Layers, ArrowRight, Sparkles, Zap, Cpu, Box, CheckCircle, Award, FileText, Lock } from 'lucide-react';
 // Shared Background Component for AI Feel
 const TechBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
@@ -28,6 +28,7 @@ const TechBackground = () => (
   </div>
 );
 import { Footer } from '../components/Footer';
+import { NewsSection } from '../components/NewsSection';
 import { Link } from 'react-router-dom';
 
 export function AboutPage() {
@@ -35,6 +36,9 @@ export function AboutPage() {
     <div className="pt-0">
       {/* Hero Section */}
       <HeroSection />
+
+      {/* Core Product Section */}
+      <ProductSection />
 
       {/* What We Do / Problems INTRO */}
       <WhatWeDoSection />
@@ -45,8 +49,17 @@ export function AboutPage() {
       {/* Core Characteristics */}
       <CoreCharacteristicsSection />
 
+      {/* News Section */}
+      <NewsSection />
+
       {/* How We Build / Approach */}
       <HowWeBuildSection />
+
+      {/* Philosophy Section */}
+      <PhilosophySection />
+
+      {/* Qualifications & Patents */}
+      <QualificationsSection />
 
       {/* Closing Statement / Vision */}
       <ClosingSection />
@@ -143,22 +156,12 @@ function HeroSection() {
           <div className="relative group">
             <div className="absolute inset-0 bg-white/40 backdrop-blur-xl rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-white/60 transform transition-transform duration-500 group-hover:scale-[1.02]" />
             <div className="relative p-10 lg:p-14 text-center">
-              <p className="text-xl md:text-3xl font-normal leading-relaxed mb-10 text-slate-800 tracking-wide">
-                星河卓越是一家专注于<span className="text-blue-600 font-bold mx-2 relative inline-block">
-                  行业与企业级 AI 系统建设
-                  <span className="absolute bottom-0 left-0 w-full h-[3px] bg-blue-200/50 rounded-full"></span>
-                </span>的技术公司，<br className="hidden md:block" />
-                致力于将 AI 能力稳定融入复杂业务体系，<br className="hidden md:block" />
-                支撑智能系统在真实组织环境中的<span className="text-blue-600 font-bold mx-2 relative inline-block">
-                  长期运行与持续演进
-                  <span className="absolute bottom-0 left-0 w-full h-[3px] bg-blue-200/50 rounded-full"></span>
-                </span>。
-              </p>
-
-              <div className="bg-gradient-to-br from-blue-50/80 to-purple-50/80 backdrop-blur-sm border border-blue-100/50 rounded-2xl p-8 shadow-inner inline-block w-full">
-                <p className="text-xl md:text-2xl font-serif italic text-slate-700">
-                  "我们关注的不是单一模型、工具或功能，<br />
-                  而是 AI 在组织中的<span className="text-blue-700 font-black mx-1 not-italic">可用性、可管理性与可持续性</span>。"
+              <div className="text-left space-y-6">
+                <p className="text-lg md:text-xl font-normal leading-relaxed text-slate-800 tracking-wide indent-8">
+                  北京星河卓越科技有限公司（简称“星河卓越”）成立于2017年6月13日，总部位于北京中关村软件园，是一家面向政企客户提供 AI 智能系统与智能体解决方案的科技企业，长期聚焦企业知识智能化、内容生成与审核、数字人及多模态生成、隐私保护与数据治理等方向，支持将大模型能力以“可治理、可审计、可追溯”的方式接入业务生产系统。公司在服务大型客户与复杂交付场景中积累了系统化的方法论与工程化能力，能够按行业与组织流程进行一客一套的落地实施，并形成可复制的交付规范与运营体系。
+                </p>
+                <p className="text-lg md:text-xl font-normal leading-relaxed text-slate-800 tracking-wide indent-8">
+                  星河卓越在 ToB/ToG 场景具备大型客户与复杂交付经验，能够面向组织级业务流程进行系统对接与工程化实施，覆盖从需求梳理、数据治理、知识入库、权限体系、工作流编排、评测验收、上线运维到持续优化的完整闭环。
                 </p>
               </div>
             </div>
@@ -517,6 +520,195 @@ function ClosingSection() {
 
           <div className="w-full h-8" />
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function ProductSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const capabilities = [
+    "企业知识与数据接入能力", "可治理的智能问答与任务执行", "AI 输出可追溯与审计机制",
+    "问答准确度与效果评测体系", "运行监控与风险管理能力", "合规与安全能力",
+    "一客一套的系统化交付模式", "多模态生成与数字人能力", "隐私保护与数据安全能力"
+  ];
+
+  const scenarios = [
+    "企业内部知识管理与智能问答", "内容审核与合规发布", "客服与业务支持系统",
+    "法务、合规与运营辅助系统", "行业级AI应用与智能体系统"
+  ];
+
+  return (
+    <section className="relative py-24 bg-slate-50 overflow-hidden">
+      <div ref={ref} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/50 border border-blue-200 text-blue-700 font-semibold text-sm tracking-wide mb-6">
+            <Box className="w-4 h-4" />
+            CORE PRODUCT
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-black mb-6 text-slate-900">
+            xingheAI <span className="text-blue-600">星河卓越产品体系</span>
+          </h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            面向企业级场景构建，强调从“<span className="font-bold text-slate-800">可用的 AI</span>”升级为“<span className="font-bold text-blue-700">可长期运行的 AI 系统</span>”。
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+          {/* Capabilities */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white rounded-[2rem] p-10 shadow-xl border border-slate-100"
+          >
+            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-slate-800">
+              <Zap className="w-6 h-6 text-yellow-500" />
+              核心能力体系
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {capabilities.map((cap, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                  <span className="text-slate-600 font-medium">{cap}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Scenarios */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2rem] p-10 shadow-xl text-white relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
+            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 relative z-10">
+              <Layers className="w-6 h-6 text-blue-200" />
+              应用场景
+            </h3>
+            <ul className="space-y-4 relative z-10">
+              {scenarios.map((item, i) => (
+                <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white/10 border border-white/10 backdrop-blur-sm">
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">0{i + 1}</div>
+                  <span className="text-lg font-medium tracking-wide">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PhilosophySection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section className="relative py-24 bg-white overflow-hidden">
+      <div ref={ref} className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8 }}
+          className="bg-white rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-2xl shadow-blue-900/5 border border-slate-100"
+        >
+          {/* Background Glows */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[100px] animate-pulse" />
+            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-50/60 rounded-full blur-[100px] animate-pulse delay-1000" />
+          </div>
+
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-semibold text-sm tracking-widest mb-10">
+              核心理念
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-12 leading-relaxed">
+              企业级人工智能的核心在于：<br />
+              <span className="text-blue-600">AI 是否可被管理</span><br />
+              <span className="text-blue-600">是否融入企业现有系统</span><br />
+              <span className="text-blue-600">是否满足长期运行与合规要求</span>
+            </h2>
+
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto mb-10 rounded-full" />
+
+            <p className="text-xl md:text-2xl text-slate-600 font-light max-w-3xl mx-auto">
+              我们以“<span className="text-slate-900 font-medium">让 AI 成为企业可信赖的系统能力</span>”为长期目标，<br className="hidden md:block" />持续推进人工智能在真实业务环境中的落地应用。
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function QualificationsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const patents = [
+    "去标识化的信息传输方法、装置、设备和计算机可读介质",
+    "保护用户隐私的去标识化信息传输方法、装置、设备"
+  ];
+
+  return (
+    <section className="relative py-24 bg-slate-50">
+      <div ref={ref} className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Qualifications */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="bg-white p-10 rounded-[2rem] shadow-lg border border-slate-100"
+          >
+            <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-8">
+              <Award className="w-8 h-8 text-red-500" />
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">企业资质</h3>
+            <div className="p-6 bg-slate-50 rounded-xl border border-slate-100">
+              <p className="text-slate-700 leading-relaxed font-medium">
+                2025年，北京星河卓越科技有限公司<br />
+                <span className="text-red-600 font-bold">“星河AI多模态分析及合成算法”</span><br />
+                已入选中国国家互联网信息办公室第十二批深度合成服务算法备案清单。
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Patents */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white p-10 rounded-[2rem] shadow-lg border border-slate-100"
+          >
+            <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-8">
+              <Lock className="w-8 h-8 text-blue-600" />
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">企业专利</h3>
+            <ul className="space-y-4 mb-8">
+              {patents.map((p, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <FileText className="w-5 h-5 text-slate-400 mt-1 shrink-0" />
+                  <span className="text-slate-700 font-medium">{p}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-slate-500 bg-blue-50/50 p-4 rounded-xl">
+              上述专利围绕“数据去标识化与隐私保护传输”提供系统性技术支撑，可用于企业在引入生成式 AI、智能体与知识系统时的合规落地与安全治理。
+            </p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
