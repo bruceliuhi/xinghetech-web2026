@@ -92,6 +92,8 @@ export function Navigation() {
                         <a
                           key={child.href}
                           href={child.href}
+                          target="_blank"
+                          rel="noreferrer"
                           onClick={() => handleClick(child.href)}
                           className={className}
                           role="menuitem"
@@ -175,6 +177,8 @@ export function Navigation() {
                         <a
                           key={child.href}
                           href={child.href}
+                          target="_blank"
+                          rel="noreferrer"
                           onClick={() => handleClick(child.href)}
                           className={className}
                         >
