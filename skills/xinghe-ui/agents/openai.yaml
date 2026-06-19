@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xinghe UI"
+  short_description: "Reusable Xinghe-style marketing site workflow."
+  default_prompt: "Use $xinghe-ui to design and ship a polished responsive product marketing website."
